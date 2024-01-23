@@ -1,0 +1,810 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{57147513-A965-4A8F-A50D-D15B17ED2587}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Intranet</RootNamespace>
+    <AssemblyName>Intranet</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44306</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>Intranet.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <LegacyPublishPropertiesPageEnabled>true</LegacyPublishPropertiesPageEnabled>
+    <IncludeIisSettings>false</IncludeIisSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>Intranet.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.4\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Identity.EntityFramework.2.2.4\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Identity.Owin.2.2.4\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Host.SystemWeb.4.2.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.Cookies.4.2.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.Facebook.4.2.2\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.Google.4.2.2\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.MicrosoftAccount.4.2.2\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.OAuth.4.2.2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.Twitter.4.2.2\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2023.0.1.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>packages\SSH.NET.2023.0.1\lib\net462\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.8.0.1\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.3.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Razor.3.3.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.Mvc" />
+    <Import Include="System.Web.Mvc.Ajax" />
+    <Import Include="System.Web.Mvc.Html" />
+    <Import Include="System.Web.Routing" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.vb" />
+    <Compile Include="App_Start\FilterConfig.vb" />
+    <Compile Include="App_Start\IdentityConfig.vb" />
+    <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="App_Start\Startup.Auth.vb" />
+    <Compile Include="AspNetUsers_Extended.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business_Units.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business_Units_Plants.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Communications\Layer_SSH.vb" />
+    <Compile Include="Controllers\AccountController.vb" />
+    <Compile Include="Controllers\Business_UnitsController.vb" />
+    <Compile Include="Controllers\Business_Units_PlantsController.vb" />
+    <Compile Include="Controllers\DevicesController.vb" />
+    <Compile Include="Controllers\Devices_OperatorsController.vb" />
+    <Compile Include="Controllers\Handling_UnitsController.vb" />
+    <Compile Include="Controllers\Handling_Units_MovementsController.vb" />
+    <Compile Include="Controllers\IntegrationEngineController.vb" />
+    <Compile Include="Controllers\Integration_SyncLogsController.vb" />
+    <Compile Include="Controllers\LoadslipsController.vb" />
+    <Compile Include="Controllers\Loadslips_DetailsController.vb" />
+    <Compile Include="Controllers\ManageController.vb" />
+    <Compile Include="Controllers\Plants_LocationsController.vb" />
+    <Compile Include="Controllers\Plants_ShiftsController.vb" />
+    <Compile Include="Controllers\Production_BatchesController.vb" />
+    <Compile Include="Controllers\ProductsController.vb" />
+    <Compile Include="Controllers\QC_ScalesController.vb" />
+    <Compile Include="Controllers\QC_Scales_ReadingsController.vb" />
+    <Compile Include="Controllers\QC_Scales_StationsController.vb" />
+    <Compile Include="Controllers\Software_ServicesController.vb" />
+    <Compile Include="Controllers\ShiftForemansReportsController.vb" />
+    <Compile Include="Controllers\Software_DropdownsController.vb" />
+    <Compile Include="Controllers\Software_PackagesController.vb" />
+    <Compile Include="Controllers\Software_SettingsController.vb" />
+    <Compile Include="Controllers\StocksController.vb" />
+    <Compile Include="Controllers\WaypointsController.vb" />
+    <Compile Include="Controllers\Waypoints_ConfigurationsController.vb" />
+    <Compile Include="Controllers\Waypoints_NumberBanksController.vb" />
+    <Compile Include="Device.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Devices_Operators.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Financial_Periods.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handling_Units.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Handling_Units_Movements.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Integration_SSCC.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Integration_SyncLogs.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Loadslip.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Loadslips_Details.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Log.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Batch_Functions.vb" />
+    <Compile Include="Logic\Waypoint_Logic.vb" />
+    <Compile Include="Logic\NumberBank_Logic.vb" />
+    <Compile Include="Logic\Device_Logic.vb" />
+    <Compile Include="Logic\Software_Control_Logic.vb" />
+    <Compile Include="Models\AccountViewModels.vb" />
+    <Compile Include="Models\EventTrapper.vb" />
+    <Compile Include="Models\IdentityModels.vb" />
+    <Compile Include="Models\ManageViewModels.vb" />
+    <Compile Include="Models\Meta_Devices.vb" />
+    <Compile Include="Models\Meta_Production_Batches.vb" />
+    <Compile Include="Models\Meta_QC_Readings.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Controllers\HomeController.vb" />
+    <Compile Include="OMD_DatawarehouseModel.Context.vb">
+      <DependentUpon>OMD_DatawarehouseModel.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="OMD_DatawarehouseModel.Designer.vb">
+      <DependentUpon>OMD_DatawarehouseModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="OMD_DatawarehouseModel.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Plants_Locations.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Plants_Shifts.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Production_Batches.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QC_Scales.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QC_Scales_Readings.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QC_Scales_Stations.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SAPInvoice.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SAPMtlDoc.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SAPTransaction.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SAP_Models.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SAP_Models.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SAP_Models.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SAP_Models.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SAP_Models.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShiftForemansReport.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Software_Development.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Software_Dropdowns.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Software_Packages.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Software_Services.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Software_Settings.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.vb" />
+    <Compile Include="Stock.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stock_Movements.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemHealthTrapper.vb" />
+    <Compile Include="Vehicle.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Waypoint.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Waypoints_Configurations.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Waypoints_NumberBanks.vb">
+      <DependentUpon>OMD_DatawarehouseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WBCompletedWeighing.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WBEvent.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WBTransaction.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zTraceIn_MB51Data.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zTraceIn_SAPConfirmations.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zTraceIn_SAPDeliveryHdrs.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zTraceIn_SAPDeliveryLines.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zTraceIn_SAPMaterials.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zTraceOut_DeliveryHdr.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zTraceOut_DeliveryLines.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zTraceOut_SSCCMovements.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zTraceOut_SSCCUnit.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zTraceOut_Waypoints.vb">
+      <DependentUpon>SAP_Models.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\images\background.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Sitev2.css" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\PublishProfiles\RCL Live.pubxml" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="logo.png" />
+    <EntityDeploy Include="OMD_DatawarehouseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OMD_DatawarehouseModel.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="OMD_DatawarehouseModel.edmx.diagram">
+      <DependentUpon>OMD_DatawarehouseModel.edmx</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
+    <Content Include="OMD_DatawarehouseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OMD_DatawarehouseModel.edmx</DependentUpon>
+      <LastGenOutput>OMD_DatawarehouseModel.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="OMD_DatawarehouseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OMD_DatawarehouseModel.edmx</DependentUpon>
+      <LastGenOutput>OMD_DatawarehouseModel.vb</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="SAP_Models.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SAP_Models.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="SAP_Models.edmx.diagram">
+      <DependentUpon>SAP_Models.edmx</DependentUpon>
+    </Content>
+    <Content Include="SAP_Models.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SAP_Models.edmx</DependentUpon>
+      <LastGenOutput>SAP_Models.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="SAP_Models.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SAP_Models.edmx</DependentUpon>
+      <LastGenOutput>SAP_Models.vb</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.1.js" />
+    <Content Include="Scripts\jquery-3.7.1.min.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.vbhtml" />
+    <Content Include="Views\Account\ConfirmEmail.vbhtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.vbhtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.vbhtml" />
+    <Content Include="Views\Account\ForgotPassword.vbhtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.vbhtml" />
+    <Content Include="Views\Account\Login.vbhtml" />
+    <Content Include="Views\Account\Register.vbhtml" />
+    <Content Include="Views\Account\ResetPassword.vbhtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.vbhtml" />
+    <Content Include="Views\Account\SendCode.vbhtml" />
+    <Content Include="Views\Account\VerifyCode.vbhtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.vbhtml" />
+    <Content Include="Views\Manage\ChangePassword.vbhtml" />
+    <Content Include="Views\Manage\Index.vbhtml" />
+    <Content Include="Views\Manage\ManageLogins.vbhtml" />
+    <Content Include="Views\Manage\SetPassword.vbhtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.vbhtml" />
+    <Content Include="Views\Shared\Lockout.vbhtml" />
+    <Content Include="Views\Shared\_LoginPartial.vbhtml" />
+    <Content Include="Views\Home\System_Administration.vbhtml" />
+    <Content Include="Views\Devices\Create.vbhtml" />
+    <Content Include="Views\Devices\Delete.vbhtml" />
+    <Content Include="Views\Devices\Details.vbhtml" />
+    <Content Include="Views\Devices\Edit.vbhtml" />
+    <Content Include="Views\Devices\Index.vbhtml" />
+    <Content Include="Views\Business_Units\Create.vbhtml" />
+    <Content Include="Views\Business_Units\Delete.vbhtml" />
+    <Content Include="Views\Business_Units\Details.vbhtml" />
+    <Content Include="Views\Business_Units\Edit.vbhtml" />
+    <Content Include="Views\Business_Units\Index.vbhtml" />
+    <Content Include="Views\QC_Scales_Readings\Create.vbhtml" />
+    <Content Include="Views\QC_Scales_Readings\Delete.vbhtml" />
+    <Content Include="Views\QC_Scales_Readings\Details.vbhtml" />
+    <Content Include="Views\QC_Scales_Readings\Edit.vbhtml" />
+    <Content Include="Views\QC_Scales_Readings\Index.vbhtml" />
+    <Content Include="Views\Software_Dropdowns\Create.vbhtml" />
+    <Content Include="Views\Software_Dropdowns\Delete.vbhtml" />
+    <Content Include="Views\Software_Dropdowns\Details.vbhtml" />
+    <Content Include="Views\Software_Dropdowns\Edit.vbhtml" />
+    <Content Include="Views\Software_Dropdowns\Index.vbhtml" />
+    <Content Include="Views\Handling_Units\Details.vbhtml" />
+    <Content Include="Views\Handling_Units\Index.vbhtml" />
+    <Content Include="Views\Business_Units_Plants\Create.vbhtml" />
+    <Content Include="Views\Business_Units_Plants\Delete.vbhtml" />
+    <Content Include="Views\Business_Units_Plants\Details.vbhtml" />
+    <Content Include="Views\Business_Units_Plants\Edit.vbhtml" />
+    <Content Include="Views\Business_Units_Plants\Index.vbhtml" />
+    <Content Include="Views\Plants_Shifts\Create.vbhtml" />
+    <Content Include="Views\Plants_Shifts\Delete.vbhtml" />
+    <Content Include="Views\Plants_Shifts\Details.vbhtml" />
+    <Content Include="Views\Plants_Shifts\Edit.vbhtml" />
+    <Content Include="Views\Plants_Shifts\Index.vbhtml" />
+    <Content Include="Views\Plants_Locations\Create.vbhtml" />
+    <Content Include="Views\Plants_Locations\Delete.vbhtml" />
+    <Content Include="Views\Plants_Locations\Details.vbhtml" />
+    <Content Include="Views\Plants_Locations\Edit.vbhtml" />
+    <Content Include="Views\Plants_Locations\Index.vbhtml" />
+    <Content Include="Views\Production_Batches\Create.vbhtml" />
+    <Content Include="Views\Production_Batches\Delete.vbhtml" />
+    <Content Include="Views\Production_Batches\Details.vbhtml" />
+    <Content Include="Views\Production_Batches\Edit.vbhtml" />
+    <Content Include="Views\Production_Batches\Index.vbhtml" />
+    <Content Include="Views\QC_Scales\Create.vbhtml" />
+    <Content Include="Views\QC_Scales\Delete.vbhtml" />
+    <Content Include="Views\QC_Scales\Details.vbhtml" />
+    <Content Include="Views\QC_Scales\Edit.vbhtml" />
+    <Content Include="Views\QC_Scales\Index.vbhtml" />
+    <Content Include="Views\Waypoints\Create.vbhtml" />
+    <Content Include="Views\Waypoints\Delete.vbhtml" />
+    <Content Include="Views\Waypoints\Details.vbhtml" />
+    <Content Include="Views\Waypoints\Edit.vbhtml" />
+    <Content Include="Views\Waypoints\Index.vbhtml" />
+    <Content Include="Views\Waypoints_NumberBanks\Create.vbhtml" />
+    <Content Include="Views\Waypoints_NumberBanks\Delete.vbhtml" />
+    <Content Include="Views\Waypoints_NumberBanks\Details.vbhtml" />
+    <Content Include="Views\Waypoints_NumberBanks\Edit.vbhtml" />
+    <Content Include="Views\Waypoints_NumberBanks\Index.vbhtml" />
+    <Content Include="Views\Handling_Units_Movements\Create.vbhtml" />
+    <Content Include="Views\Handling_Units_Movements\Delete.vbhtml" />
+    <Content Include="Views\Handling_Units_Movements\Details.vbhtml" />
+    <Content Include="Views\Handling_Units_Movements\Edit.vbhtml" />
+    <Content Include="Views\Handling_Units_Movements\Index.vbhtml" />
+    <Content Include="Views\QC_Scales_Stations\Create.vbhtml" />
+    <Content Include="Views\QC_Scales_Stations\Delete.vbhtml" />
+    <Content Include="Views\QC_Scales_Stations\Details.vbhtml" />
+    <Content Include="Views\QC_Scales_Stations\Edit.vbhtml" />
+    <Content Include="Views\QC_Scales_Stations\Index.vbhtml" />
+    <Content Include="Views\Products\Create.vbhtml" />
+    <Content Include="Views\Products\Delete.vbhtml" />
+    <Content Include="Views\Products\Details.vbhtml" />
+    <Content Include="Views\Products\Edit.vbhtml" />
+    <Content Include="Views\Products\Index.vbhtml" />
+    <Content Include="Views\Software_Settings\Create.vbhtml" />
+    <Content Include="Views\Software_Settings\Delete.vbhtml" />
+    <Content Include="Views\Software_Settings\Details.vbhtml" />
+    <Content Include="Views\Software_Settings\Edit.vbhtml" />
+    <Content Include="Views\Software_Settings\Index.vbhtml" />
+    <Content Include="Views\IDS_Configuration\Create.vbhtml" />
+    <Content Include="Views\IDS_Configuration\Delete.vbhtml" />
+    <Content Include="Views\IDS_Configuration\Details.vbhtml" />
+    <Content Include="Views\IDS_Configuration\Edit.vbhtml" />
+    <Content Include="Views\IDS_Configuration\Index.vbhtml" />
+    <Content Include="Views\Software_Services\Create.vbhtml" />
+    <Content Include="Views\Software_Services\Delete.vbhtml" />
+    <Content Include="Views\Software_Services\Details.vbhtml" />
+    <Content Include="Views\Software_Services\Edit.vbhtml" />
+    <Content Include="Views\Software_Services\Index.vbhtml" />
+    <Content Include="Views\Software_Packages\Create.vbhtml" />
+    <Content Include="Views\Software_Packages\Delete.vbhtml" />
+    <Content Include="Views\Software_Packages\Details.vbhtml" />
+    <Content Include="Views\Software_Packages\Edit.vbhtml" />
+    <Content Include="Views\Software_Packages\Index.vbhtml" />
+    <Content Include="SoftwarePackages\Traceability\3.0.0\Traceability.7z" />
+    <Content Include="SoftwarePackages\Scales\1.0.0\Scales.7z" />
+    <Content Include="Views\Loadslips_Details\Delete.vbhtml" />
+    <Content Include="Views\Loadslips_Details\Details.vbhtml" />
+    <Content Include="Views\Loadslips_Details\Index.vbhtml" />
+    <Content Include="Views\Shared\_Layoutv2.vbhtml" />
+    <Content Include="Views\Stocks\Create.vbhtml" />
+    <Content Include="Views\Stocks\Delete.vbhtml" />
+    <Content Include="Views\Stocks\Details.vbhtml" />
+    <Content Include="Views\Stocks\Edit.vbhtml" />
+    <Content Include="Views\Stocks\Index.vbhtml" />
+    <Content Include="Views\Loadslips\Delete.vbhtml" />
+    <Content Include="Views\Loadslips\Details.vbhtml" />
+    <Content Include="Views\Loadslips\Index.vbhtml" />
+    <Content Include="Views\ShiftForemansReports\Create.vbhtml" />
+    <Content Include="Views\ShiftForemansReports\Delete.vbhtml" />
+    <Content Include="Views\ShiftForemansReports\Details.vbhtml" />
+    <Content Include="Views\ShiftForemansReports\Edit.vbhtml" />
+    <Content Include="Views\ShiftForemansReports\Index.vbhtml" />
+    <Content Include="Views\Integration_SyncLogs\Create.vbhtml" />
+    <Content Include="Views\Integration_SyncLogs\Delete.vbhtml" />
+    <Content Include="Views\Integration_SyncLogs\Details.vbhtml" />
+    <Content Include="Views\Integration_SyncLogs\Edit.vbhtml" />
+    <Content Include="Views\Integration_SyncLogs\Index.vbhtml" />
+    <Content Include="Views\Shared\_Success.vbhtml" />
+    <Content Include="Views\Devices_Operators\Create.vbhtml" />
+    <Content Include="Views\Devices_Operators\Delete.vbhtml" />
+    <Content Include="Views\Devices_Operators\Details.vbhtml" />
+    <Content Include="Views\Devices_Operators\Edit.vbhtml" />
+    <Content Include="Views\Devices_Operators\Index.vbhtml" />
+    <Content Include="Views\Waypoints_Configurations\Create.vbhtml" />
+    <Content Include="Views\Waypoints_Configurations\Delete.vbhtml" />
+    <Content Include="Views\Waypoints_Configurations\Details.vbhtml" />
+    <Content Include="Views\Waypoints_Configurations\Edit.vbhtml" />
+    <Content Include="Views\Waypoints_Configurations\Index.vbhtml" />
+    <Content Include="Views\Devices\Device_Control.vbhtml" />
+    <Content Include="SoftwarePackages\Traceability\4.0\Traceability.7z" />
+    <Content Include="SoftwarePackages\Traceability\5.0\Traceability.7z" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\_ViewStart.vbhtml" />
+    <Content Include="Views\Home\About.vbhtml" />
+    <Content Include="Views\Home\Contact.vbhtml" />
+    <Content Include="Views\Home\Index.vbhtml" />
+    <Content Include="Views\Shared\Error.vbhtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58478</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44306/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

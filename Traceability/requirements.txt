@@ -1,0 +1,17 @@
+astroid==2.15.1
+certifi==2022.12.7
+charset-normalizer==3.1.0
+guizero==1.4.0
+idna==3.4
+julian==0.14
+labelary-mwisslead==1.0.1
+lazy-object-proxy==1.9.0
+Pillow==9.5.0
+pip==23.0.1
+pywin32==306
+requests==2.28.2
+setuptools==67.6.1
+typing_extensions==4.5.0
+urllib3==1.26.15
+wrapt==1.15.0
+zebra==0.1.0

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c811f24481f341b582d205496a41bd27" Name="Diagram1">
+        <EntityTypeShape EntityType="SAP_Model.SAPInvoice" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SAP_Model.SAPMtlDoc" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SAP_Model.SAPTransaction" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SAP_Model.WBCompletedWeighing" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SAP_Model.WBEvent" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SAP_Model.WBTransaction" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SAP_Model.zTraceIn_MB51Data" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SAP_Model.zTraceIn_SAPConfirmations" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SAP_Model.zTraceIn_SAPDeliveryHdrs" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SAP_Model.zTraceIn_SAPDeliveryLines" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SAP_Model.zTraceIn_SAPMaterials" Width="1.5" PointX="10.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SAP_Model.zTraceOut_DeliveryHdr" Width="1.5" PointX="6.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SAP_Model.zTraceOut_DeliveryLines" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SAP_Model.zTraceOut_SSCCMovements" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SAP_Model.zTraceOut_SSCCUnit" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SAP_Model.zTraceOut_Waypoints" Width="1.5" PointX="14.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

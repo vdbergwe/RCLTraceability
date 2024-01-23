@@ -1,0 +1,1306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SAP_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SAPInvoices">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SourceSystem" Type="nchar" MaxLength="10" />
+          <Property Name="SrcMessageID" Type="nchar" MaxLength="10" />
+          <Property Name="SrcMessageTime" Type="datetime" />
+          <Property Name="SrcInvoiceNo" Type="nchar" MaxLength="10" />
+          <Property Name="SrcDocStatus" Type="nchar" MaxLength="2" />
+          <Property Name="SrcRefDocNr" Type="nchar" MaxLength="10" />
+          <Property Name="Src_InvoicedWtKg" Type="numeric" Precision="7" Scale="0" />
+          <Property Name="SrcDoc_PostingDate" Type="date" />
+          <Property Name="SrcDoc_PostingTime" Type="time" Precision="7" />
+          <Property Name="SrcDoc_ChangeUser" Type="nchar" MaxLength="30" />
+          <Property Name="Src_IntegrationTime" Type="datetime" />
+          <Property Name="Src_IntegrationUser" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="SAPMtlDocs">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WBID" Type="nchar" MaxLength="4" />
+          <Property Name="TranType" Type="nchar" MaxLength="4" />
+          <Property Name="SourceSystem" Type="nchar" MaxLength="10" />
+          <Property Name="SrcMtlDocNum" Type="nchar" MaxLength="10" />
+          <Property Name="SrcMtlDocYear" Type="nchar" MaxLength="4" />
+          <Property Name="SrcMtlDocType" Type="nchar" MaxLength="3" />
+          <Property Name="SrcMtlDocLine" Type="nchar" MaxLength="3" />
+          <Property Name="SrcMessageID" Type="nchar" MaxLength="10" />
+          <Property Name="SrcMessageTime" Type="datetime" />
+          <Property Name="SrcMessageActive" Type="nchar" MaxLength="2" />
+          <Property Name="SrcDocStatus" Type="nchar" MaxLength="2" />
+          <Property Name="Src_MtlDcDate" Type="date" />
+          <Property Name="Src_PostingDate" Type="date" />
+          <Property Name="Src_MovementType" Type="nchar" MaxLength="3" />
+          <Property Name="Src_DeliveryNoteNo" Type="nchar" MaxLength="16" />
+          <Property Name="Src_HeaderText" Type="nchar" MaxLength="25" />
+          <Property Name="Src_BillOfLading" Type="nchar" MaxLength="16" />
+          <Property Name="Src_PONumber" Type="nchar" MaxLength="10" />
+          <Property Name="Src_MATNR" Type="nchar" MaxLength="18" />
+          <Property Name="Src_GRQty" Type="numeric" Precision="10" Scale="3" />
+          <Property Name="Src_GRUOM" Type="nchar" MaxLength="3" />
+          <Property Name="Src_GRUser" Type="nchar" MaxLength="30" />
+          <Property Name="Src_GRDate" Type="date" />
+          <Property Name="Src_GRTime" Type="time" Precision="7" />
+          <Property Name="Src_IntegrationTime" Type="datetime" />
+          <Property Name="Src_IntegrationUser" Type="nchar" MaxLength="30" />
+          <Property Name="WWMessageStatus" Type="nchar" MaxLength="2" />
+          <Property Name="WWProcessedtime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SAPTransactions">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SourceSystem" Type="nchar" MaxLength="10" />
+          <Property Name="SrcMessageID" Type="nchar" MaxLength="10" />
+          <Property Name="SrcMessageTime" Type="datetime" />
+          <Property Name="SrcDocStatus" Type="nchar" MaxLength="2" />
+          <Property Name="Src_ExpectedWtKg" Type="numeric" Precision="7" Scale="0" />
+          <Property Name="SrcRefDocNr" Type="nchar" MaxLength="10" />
+          <Property Name="SrcDoc_KUNAG" Type="nchar" MaxLength="10" />
+          <Property Name="SrcDoc_KUNNR" Type="nchar" MaxLength="10" />
+          <Property Name="SrcDoc_ChangeTime" Type="datetime" />
+          <Property Name="SrcDoc_ChangeUser" Type="nchar" MaxLength="30" />
+          <Property Name="Src_IntegrationTime" Type="datetime" />
+          <Property Name="Src_IntegrationUser" Type="nchar" MaxLength="30" />
+          <Property Name="SrcDoc_KUNAG_NAME" Type="nchar" MaxLength="255" />
+          <Property Name="SrcDoc_KUNNR_NAME" Type="nchar" MaxLength="255" />
+          <Property Name="SrcDoc_VBELN_VA" Type="nchar" MaxLength="10" />
+          <Property Name="SrcDoc_BSTNK" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="WBCompletedWeighings">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WBID" Type="nchar" MaxLength="4" />
+          <Property Name="TranType" Type="nchar" MaxLength="4" />
+          <Property Name="SrcDocNum" Type="nchar" MaxLength="10" />
+          <Property Name="SrcDocType" Type="nchar" MaxLength="3" />
+          <Property Name="SourceSystem" Type="nchar" MaxLength="10" />
+          <Property Name="WWMessageID" Type="nchar" MaxLength="10" />
+          <Property Name="WWMessageTime" Type="datetime" />
+          <Property Name="WW_Direction" Type="nchar" MaxLength="3" />
+          <Property Name="WW_ActualWtKg" Type="numeric" Precision="7" Scale="0" />
+          <Property Name="WW_ActualDate" Type="date" />
+          <Property Name="WW_ActualReg" Type="nchar" MaxLength="10" />
+          <Property Name="WW_ActualDriver" Type="nchar" MaxLength="30" />
+          <Property Name="WW_ActualDeviationUnder" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="WW_ActualDeviationOver" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="WW_PO_CumulativeDlvy" Type="numeric" Precision="9" Scale="0" />
+          <Property Name="WW_W1_D" Type="date" />
+          <Property Name="WW_W1_T" Type="time" Precision="7" />
+          <Property Name="WW_W1_MASS" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="WW_W2_D" Type="date" />
+          <Property Name="WW_W2_T" Type="time" Precision="7" />
+          <Property Name="WW_W2_MASS" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="VendorDeliveryRef" Type="nchar" MaxLength="40" />
+          <Property Name="SrcMessageStatus" Type="nchar" MaxLength="2" />
+          <Property Name="SrcProcessedtime" Type="datetime" />
+          <Property Name="WW_TicketNo" Type="nchar" MaxLength="10" />
+          <Property Name="TotalPalletCount" Type="int" />
+          <Property Name="TotalPalletWeight" Type="numeric" Precision="3" Scale="3" />
+          <Property Name="TotalPalletWeightKgs" Type="numeric" Precision="9" Scale="3" />
+        </EntityType>
+        <EntityType Name="WBEvents">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WBID" Type="nchar" MaxLength="4" />
+          <Property Name="TranType" Type="nchar" MaxLength="4" />
+          <Property Name="SrcDocNum" Type="nchar" MaxLength="10" />
+          <Property Name="SrcDocType" Type="nchar" MaxLength="3" />
+          <Property Name="SourceSystem" Type="nchar" MaxLength="10" />
+          <Property Name="WWMessageID" Type="nchar" MaxLength="10" />
+          <Property Name="WWMessageTime" Type="datetime" />
+          <Property Name="WW_ActualWtKg" Type="numeric" Precision="7" Scale="0" />
+          <Property Name="WW_ActualDate" Type="date" />
+          <Property Name="WW_ActualReg" Type="nchar" MaxLength="10" />
+          <Property Name="WW_ActualDriver" Type="nchar" MaxLength="30" />
+          <Property Name="WW_WeighingStage" Type="nchar" MaxLength="1" />
+          <Property Name="WW_Wx_D" Type="date" />
+          <Property Name="WW_Wx_T" Type="time" Precision="7" />
+          <Property Name="WW_Wx_MASS" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="WW_TicketNo" Type="nchar" MaxLength="10" />
+          <Property Name="WW_EventType" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="WBTransactions">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WBID" Type="nchar" MaxLength="4" />
+          <Property Name="TranType" Type="nchar" MaxLength="4" />
+          <Property Name="SrcDocNum" Type="nchar" MaxLength="10" />
+          <Property Name="SrcDocType" Type="nchar" MaxLength="3" />
+          <Property Name="SourceSystem" Type="nchar" MaxLength="10" />
+          <Property Name="SrcMessageID" Type="nchar" MaxLength="10" />
+          <Property Name="SrcMessageTime" Type="datetime" />
+          <Property Name="SrcDocStatus" Type="nchar" MaxLength="2" />
+          <Property Name="Src_ExpectedWtKg" Type="numeric" Precision="7" Scale="0" />
+          <Property Name="Src_ExpectedDate" Type="date" />
+          <Property Name="Src_ExpectedReg" Type="nchar" MaxLength="10" />
+          <Property Name="Src_ExpectedDriver" Type="nchar" MaxLength="30" />
+          <Property Name="Src_AllowedTolUnder" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="Src_AllowedTolOver" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="Src_PO_CumulativeDlvy" Type="numeric" Precision="9" Scale="0" />
+          <Property Name="SrcDoc_ChangeTime" Type="datetime" />
+          <Property Name="SrcDoc_ChangeUser" Type="nchar" MaxLength="30" />
+          <Property Name="Src_IntegrationTime" Type="datetime" />
+          <Property Name="Src_IntegrationUser" Type="nchar" MaxLength="30" />
+          <Property Name="SrcDoc_PartnerNumber" Type="nchar" MaxLength="10" />
+          <Property Name="SrcDoc_PartnerType" Type="nchar" MaxLength="2" />
+          <Property Name="Src_RefDocCount" Type="smallint" />
+          <Property Name="Src_ExpiryDays" Type="smallint" />
+          <Property Name="WWMessageStatus" Type="nchar" MaxLength="2" />
+          <Property Name="WWProcessedtime" Type="datetime" />
+          <Property Name="SrcDoc_PartnerName" Type="varchar" MaxLength="255" />
+          <Property Name="BulkFlag" Type="nchar" MaxLength="1" />
+          <Property Name="VendorName" Type="nchar" MaxLength="35" />
+        </EntityType>
+        <EntityType Name="zTraceIn_MB51Data">
+          <Key>
+            <PropertyRef Name="SysID" />
+            <PropertyRef Name="MANDT" />
+            <PropertyRef Name="MBLNR" />
+            <PropertyRef Name="MJAHR" />
+            <PropertyRef Name="ZEILE" />
+          </Key>
+          <Property Name="SysID" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="MANDT" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="MBLNR" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="MJAHR" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="ZEILE" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="MATNR" Type="nvarchar" MaxLength="18" />
+          <Property Name="WERKS" Type="nchar" MaxLength="4" />
+          <Property Name="LGORT" Type="nchar" MaxLength="4" />
+          <Property Name="CHARG" Type="nvarchar" MaxLength="10" />
+          <Property Name="BWART" Type="nvarchar" MaxLength="3" />
+          <Property Name="BUDAT" Type="nchar" MaxLength="10" />
+          <Property Name="SHKZG" Type="nvarchar" MaxLength="2" />
+          <Property Name="ERFMG" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ERFME" Type="nvarchar" MaxLength="3" />
+          <Property Name="VGART" Type="nvarchar" MaxLength="2" />
+          <Property Name="BUKRS" Type="nvarchar" MaxLength="4" />
+          <Property Name="GJAHR" Type="nchar" MaxLength="4" />
+          <Property Name="MONAT" Type="nchar" MaxLength="3" />
+          <Property Name="BUDAT_date" Type="date" />
+          <Property Name="FinPerKey" Type="nvarchar" MaxLength="6" />
+          <Property Name="ReadStatus" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="zTraceIn_SAPConfirmations">
+          <Key>
+            <PropertyRef Name="SysID" />
+            <PropertyRef Name="MANDT" />
+            <PropertyRef Name="MBLNR" />
+            <PropertyRef Name="MJAHR" />
+            <PropertyRef Name="ZEILE" />
+          </Key>
+          <Property Name="SysID" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="MANDT" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="MBLNR" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="MJAHR" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="ZEILE" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="MATNR" Type="nvarchar" MaxLength="18" />
+          <Property Name="WERKS" Type="nchar" MaxLength="4" />
+          <Property Name="LGORT" Type="nchar" MaxLength="4" />
+          <Property Name="CHARG" Type="nvarchar" MaxLength="10" />
+          <Property Name="BWART" Type="nvarchar" MaxLength="3" />
+          <Property Name="BUDAT" Type="nchar" MaxLength="10" />
+          <Property Name="SHKZG" Type="nvarchar" MaxLength="2" />
+          <Property Name="ERFMG" Type="numeric" Precision="10" Scale="3" />
+          <Property Name="ERFME" Type="nvarchar" MaxLength="3" />
+          <Property Name="VGART" Type="nvarchar" MaxLength="2" />
+          <Property Name="BUKRS" Type="nvarchar" MaxLength="4" />
+          <Property Name="GJAHR" Type="nchar" MaxLength="4" />
+          <Property Name="MONAT" Type="nchar" MaxLength="3" />
+          <Property Name="CPUDT" Type="date" />
+          <Property Name="CPUTM" Type="nvarchar" MaxLength="8" />
+          <Property Name="Export_Date" Type="date" />
+          <Property Name="Export_Time" Type="nvarchar" MaxLength="8" />
+          <Property Name="BUDAT_date" Type="date" />
+          <Property Name="FinPerKey" Type="nvarchar" MaxLength="6" />
+          <Property Name="ERFMGKgVal" Type="numeric" Precision="10" Scale="3" />
+          <Property Name="ConfShiftId" Type="nvarchar" MaxLength="10" />
+          <Property Name="ReadStatus" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="zTraceIn_SAPDeliveryHdrs">
+          <Key>
+            <PropertyRef Name="SourceSystem" />
+            <PropertyRef Name="SrcRefDocNr" />
+            <PropertyRef Name="ExportDate" />
+            <PropertyRef Name="ExportTime" />
+          </Key>
+          <Property Name="AutoKey" Type="int" />
+          <Property Name="SourceSystem" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="SrcRefDocNr" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ExportDate" Type="date" Nullable="false" />
+          <Property Name="ExportTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="VSTEL" Type="nvarchar" MaxLength="4" />
+          <Property Name="VKORG" Type="nvarchar" MaxLength="4" />
+          <Property Name="LFART" Type="nvarchar" MaxLength="4" />
+          <Property Name="KFGRP" Type="nvarchar" MaxLength="2" />
+          <Property Name="TCODE" Type="nvarchar" MaxLength="20" />
+          <Property Name="INCO2" Type="nvarchar" MaxLength="20" />
+          <Property Name="VBTYP" Type="nvarchar" MaxLength="1" />
+          <Property Name="BRGEW" Type="numeric" Precision="13" Scale="3" />
+          <Property Name="NTGEW" Type="numeric" Precision="13" Scale="3" />
+          <Property Name="GEWEI" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="zTraceIn_SAPDeliveryLines">
+          <Key>
+            <PropertyRef Name="SourceSystem" />
+            <PropertyRef Name="SrcRefDocNr" />
+            <PropertyRef Name="POSNR" />
+            <PropertyRef Name="ExportDate" />
+            <PropertyRef Name="ExportTime" />
+          </Key>
+          <Property Name="AutoKey" Type="int" />
+          <Property Name="SourceSystem" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="SrcRefDocNr" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="POSNR" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="ExportDate" Type="date" Nullable="false" />
+          <Property Name="ExportTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="MATNR" Type="nvarchar" MaxLength="18" />
+          <Property Name="WERKS" Type="nvarchar" MaxLength="4" />
+          <Property Name="LFIMG" Type="decimal" Precision="13" Scale="3" />
+          <Property Name="MEINS" Type="nvarchar" MaxLength="3" />
+          <Property Name="LGORT" Type="nvarchar" MaxLength="4" />
+          <Property Name="VRKME" Type="nvarchar" MaxLength="3" />
+          <Property Name="MTART" Type="nvarchar" MaxLength="4" />
+          <Property Name="BRGEW" Type="numeric" Precision="13" Scale="3" />
+          <Property Name="NTGEW" Type="numeric" Precision="13" Scale="3" />
+          <Property Name="GEWEI" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="zTraceIn_SAPMaterials">
+          <Key>
+            <PropertyRef Name="SYSID" />
+            <PropertyRef Name="MANDT" />
+            <PropertyRef Name="WERKS" />
+            <PropertyRef Name="MATNR" />
+          </Key>
+          <Property Name="SYSID" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="MANDT" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="WERKS" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="MATNR" Type="nvarchar" MaxLength="18" Nullable="false" />
+          <Property Name="MAKTX" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="GTIN_CON" Type="nvarchar" MaxLength="18" Nullable="false" />
+          <Property Name="GTIN_HU" Type="nvarchar" MaxLength="18" Nullable="false" />
+          <Property Name="GTIN_Level1" Type="nvarchar" MaxLength="18" Nullable="false" />
+          <Property Name="GTIN_Level2" Type="nvarchar" MaxLength="18" Nullable="false" />
+          <Property Name="NetWt_CON" Type="numeric" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="NetWt_HU" Type="numeric" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="NetWt_Level1" Type="numeric" Precision="13" Scale="3" />
+          <Property Name="NetWt_Level2" Type="numeric" Precision="13" Scale="3" />
+          <Property Name="TareWt_CON" Type="numeric" Precision="13" Scale="3" />
+          <Property Name="TareWt_HU" Type="numeric" Precision="13" Scale="3" />
+          <Property Name="TareWt_Level1" Type="numeric" Precision="13" Scale="3" />
+          <Property Name="TareWt_Level2" Type="numeric" Precision="13" Scale="3" />
+          <Property Name="HUQty_CON" Type="numeric" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="HUQty_Level1" Type="numeric" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="HUQty_Level2" Type="numeric" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="SAPUOM_CON" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="SAPUOM_HU" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="SAPUOM_Level1" Type="nvarchar" MaxLength="3" />
+          <Property Name="SAPUOM_Level2" Type="nvarchar" MaxLength="3" />
+          <Property Name="SAPUOM_Base" Type="nvarchar" MaxLength="3" />
+          <Property Name="SAPUOM_Sales" Type="nvarchar" MaxLength="3" />
+          <Property Name="QCUOM" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="WtCatUOM" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="ProductType" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="ProductWtCat" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="BulkFlag" Type="nvarchar" MaxLength="1" />
+          <Property Name="DateFirstAdded" Type="date" />
+          <Property Name="DateLastUpdated" Type="date" />
+          <Property Name="ReadStatus" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="Retired" Type="nchar" MaxLength="1" />
+          <Property Name="RetirementDate" Type="date" />
+        </EntityType>
+        <EntityType Name="zTraceOut_DeliveryHdr">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+            <PropertyRef Name="SourceSystem" />
+            <PropertyRef Name="SrcRefDocNr" />
+            <PropertyRef Name="LoadingTime" />
+          </Key>
+          <Property Name="AutoKey" Type="int" Nullable="false" />
+          <Property Name="SourceSystem" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="SrcRefDocNr" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="LoadingTime" Type="datetime" Nullable="false" />
+          <Property Name="WERKS" Type="nvarchar" MaxLength="4" />
+          <Property Name="LoadingBay" Type="nvarchar" MaxLength="4" />
+          <Property Name="DriverName" Type="varchar" MaxLength="30" />
+          <Property Name="TruckRegNo" Type="varchar" MaxLength="12" />
+          <Property Name="Trailer1RegNo" Type="varchar" MaxLength="12" />
+          <Property Name="Trailer2RegNo" Type="varchar" MaxLength="12" />
+          <Property Name="OperatorID" Type="int" />
+        </EntityType>
+        <EntityType Name="zTraceOut_DeliveryLines">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+            <PropertyRef Name="SourceSystem" />
+            <PropertyRef Name="SrcRefDocNr" />
+            <PropertyRef Name="LoadingTime" />
+            <PropertyRef Name="POSNR" />
+            <PropertyRef Name="LinePalletNo" />
+          </Key>
+          <Property Name="AutoKey" Type="int" Nullable="false" />
+          <Property Name="SourceSystem" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="SrcRefDocNr" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="LoadingTime" Type="datetime" Nullable="false" />
+          <Property Name="POSNR" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="LinePalletNo" Type="int" Nullable="false" />
+          <Property Name="SSCC" Type="nvarchar" MaxLength="20" />
+          <Property Name="StorageBay" Type="nvarchar" MaxLength="10" />
+          <Property Name="LoadingBay" Type="nvarchar" MaxLength="4" />
+          <Property Name="OperatorID" Type="int" />
+        </EntityType>
+        <EntityType Name="zTraceOut_SSCCMovements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SSCC" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WaypointID" Type="int" Nullable="false" />
+          <Property Name="WaypointTime" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="MovementDirection" Type="nvarchar" MaxLength="3" />
+          <Property Name="MovementDesc" Type="nvarchar" MaxLength="1024" />
+          <Property Name="OperatorID" Type="nvarchar" MaxLength="128" />
+          <Property Name="NewStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="MovementTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="zTraceOut_SSCCUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WERKS" Type="nvarchar" MaxLength="50" />
+          <Property Name="MATNR" Type="nvarchar" MaxLength="50" />
+          <Property Name="SSCC" Type="nvarchar" MaxLength="20" />
+          <Property Name="WaypointId" Type="int" />
+          <Property Name="Waypoint" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="CreatedTime" Type="time" Precision="7" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="ActualWeight" Type="float" />
+          <Property Name="ScannedGTIN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Label_GTIN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Label_Description" Type="nvarchar(max)" />
+          <Property Name="Label_Country" Type="nvarchar(max)" />
+          <Property Name="PData_DateCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PData_DateTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="PData_BatchCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PData_BestBefore" Type="nvarchar" MaxLength="50" />
+          <Property Name="PDet_PCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PDet_OrdUnits" Type="int" />
+          <Property Name="PDet_ConsUnits" Type="int" />
+          <Property Name="PDet_NetWt" Type="float" />
+        </EntityType>
+        <EntityType Name="zTraceOut_Waypoints">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlantId" Type="int" />
+          <Property Name="LocationDesc" Type="int" />
+        </EntityType>
+        <EntityContainer Name="SAP_ModelStoreContainer">
+          <EntitySet Name="SAPInvoices" EntityType="Self.SAPInvoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAPMtlDocs" EntityType="Self.SAPMtlDocs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAPTransactions" EntityType="Self.SAPTransactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WBCompletedWeighings" EntityType="Self.WBCompletedWeighings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WBEvents" EntityType="Self.WBEvents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WBTransactions" EntityType="Self.WBTransactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zTraceIn_MB51Data" EntityType="Self.zTraceIn_MB51Data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zTraceIn_SAPConfirmations" EntityType="Self.zTraceIn_SAPConfirmations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zTraceIn_SAPDeliveryHdrs" EntityType="Self.zTraceIn_SAPDeliveryHdrs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zTraceIn_SAPDeliveryLines" EntityType="Self.zTraceIn_SAPDeliveryLines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zTraceIn_SAPMaterials" EntityType="Self.zTraceIn_SAPMaterials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zTraceOut_DeliveryHdr" EntityType="Self.zTraceOut_DeliveryHdr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zTraceOut_DeliveryLines" EntityType="Self.zTraceOut_DeliveryLines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zTraceOut_SSCCMovements" EntityType="Self.zTraceOut_SSCCMovements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zTraceOut_SSCCUnit" EntityType="Self.zTraceOut_SSCCUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zTraceOut_Waypoints" EntityType="Self.zTraceOut_Waypoints" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAP_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="zzSAPIntegrationTSHEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SAPInvoices" EntityType="SAP_Model.SAPInvoice" />
+          <EntitySet Name="SAPMtlDocs" EntityType="SAP_Model.SAPMtlDoc" />
+          <EntitySet Name="SAPTransactions" EntityType="SAP_Model.SAPTransaction" />
+          <EntitySet Name="WBCompletedWeighings" EntityType="SAP_Model.WBCompletedWeighing" />
+          <EntitySet Name="WBEvents" EntityType="SAP_Model.WBEvent" />
+          <EntitySet Name="WBTransactions" EntityType="SAP_Model.WBTransaction" />
+          <EntitySet Name="zTraceIn_MB51Data" EntityType="SAP_Model.zTraceIn_MB51Data" />
+          <EntitySet Name="zTraceIn_SAPConfirmations" EntityType="SAP_Model.zTraceIn_SAPConfirmations" />
+          <EntitySet Name="zTraceIn_SAPDeliveryHdrs" EntityType="SAP_Model.zTraceIn_SAPDeliveryHdrs" />
+          <EntitySet Name="zTraceIn_SAPDeliveryLines" EntityType="SAP_Model.zTraceIn_SAPDeliveryLines" />
+          <EntitySet Name="zTraceIn_SAPMaterials" EntityType="SAP_Model.zTraceIn_SAPMaterials" />
+          <EntitySet Name="zTraceOut_DeliveryHdr" EntityType="SAP_Model.zTraceOut_DeliveryHdr" />
+          <EntitySet Name="zTraceOut_DeliveryLines" EntityType="SAP_Model.zTraceOut_DeliveryLines" />
+          <EntitySet Name="zTraceOut_SSCCMovements" EntityType="SAP_Model.zTraceOut_SSCCMovements" />
+          <EntitySet Name="zTraceOut_SSCCUnit" EntityType="SAP_Model.zTraceOut_SSCCUnit" />
+          <EntitySet Name="zTraceOut_Waypoints" EntityType="SAP_Model.zTraceOut_Waypoints" />
+        </EntityContainer>
+        <EntityType Name="SAPInvoice">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SourceSystem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMessageID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMessageTime" Type="DateTime" Precision="3" />
+          <Property Name="SrcInvoiceNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDocStatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="SrcRefDocNr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Src_InvoicedWtKg" Type="Decimal" Precision="7" Scale="0" />
+          <Property Name="SrcDoc_PostingDate" Type="DateTime" Precision="0" />
+          <Property Name="SrcDoc_PostingTime" Type="Time" Precision="7" />
+          <Property Name="SrcDoc_ChangeUser" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Src_IntegrationTime" Type="DateTime" Precision="3" />
+          <Property Name="Src_IntegrationUser" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SAPMtlDoc">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WBID" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="TranType" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="SourceSystem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMtlDocNum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMtlDocYear" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMtlDocType" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMtlDocLine" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMessageID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMessageTime" Type="DateTime" Precision="3" />
+          <Property Name="SrcMessageActive" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDocStatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Src_MtlDcDate" Type="DateTime" Precision="0" />
+          <Property Name="Src_PostingDate" Type="DateTime" Precision="0" />
+          <Property Name="Src_MovementType" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Src_DeliveryNoteNo" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="Src_HeaderText" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="Src_BillOfLading" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="Src_PONumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Src_MATNR" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="Src_GRQty" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="Src_GRUOM" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Src_GRUser" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Src_GRDate" Type="DateTime" Precision="0" />
+          <Property Name="Src_GRTime" Type="Time" Precision="7" />
+          <Property Name="Src_IntegrationTime" Type="DateTime" Precision="3" />
+          <Property Name="Src_IntegrationUser" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="WWMessageStatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="WWProcessedtime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SAPTransaction">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SourceSystem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMessageID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMessageTime" Type="DateTime" Precision="3" />
+          <Property Name="SrcDocStatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Src_ExpectedWtKg" Type="Decimal" Precision="7" Scale="0" />
+          <Property Name="SrcRefDocNr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDoc_KUNAG" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDoc_KUNNR" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDoc_ChangeTime" Type="DateTime" Precision="3" />
+          <Property Name="SrcDoc_ChangeUser" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Src_IntegrationTime" Type="DateTime" Precision="3" />
+          <Property Name="Src_IntegrationUser" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDoc_KUNAG_NAME" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDoc_KUNNR_NAME" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDoc_VBELN_VA" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDoc_BSTNK" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WBCompletedWeighing">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WBID" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="TranType" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDocNum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDocType" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="SourceSystem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WWMessageID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WWMessageTime" Type="DateTime" Precision="3" />
+          <Property Name="WW_Direction" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="WW_ActualWtKg" Type="Decimal" Precision="7" Scale="0" />
+          <Property Name="WW_ActualDate" Type="DateTime" Precision="0" />
+          <Property Name="WW_ActualReg" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WW_ActualDriver" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="WW_ActualDeviationUnder" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="WW_ActualDeviationOver" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="WW_PO_CumulativeDlvy" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="WW_W1_D" Type="DateTime" Precision="0" />
+          <Property Name="WW_W1_T" Type="Time" Precision="7" />
+          <Property Name="WW_W1_MASS" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="WW_W2_D" Type="DateTime" Precision="0" />
+          <Property Name="WW_W2_T" Type="Time" Precision="7" />
+          <Property Name="WW_W2_MASS" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="VendorDeliveryRef" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMessageStatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="SrcProcessedtime" Type="DateTime" Precision="3" />
+          <Property Name="WW_TicketNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TotalPalletCount" Type="Int32" />
+          <Property Name="TotalPalletWeight" Type="Decimal" Precision="3" Scale="3" />
+          <Property Name="TotalPalletWeightKgs" Type="Decimal" Precision="9" Scale="3" />
+        </EntityType>
+        <EntityType Name="WBEvent">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WBID" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="TranType" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDocNum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDocType" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="SourceSystem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WWMessageID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WWMessageTime" Type="DateTime" Precision="3" />
+          <Property Name="WW_ActualWtKg" Type="Decimal" Precision="7" Scale="0" />
+          <Property Name="WW_ActualDate" Type="DateTime" Precision="0" />
+          <Property Name="WW_ActualReg" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WW_ActualDriver" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="WW_WeighingStage" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="WW_Wx_D" Type="DateTime" Precision="0" />
+          <Property Name="WW_Wx_T" Type="Time" Precision="7" />
+          <Property Name="WW_Wx_MASS" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="WW_TicketNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="WW_EventType" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WBTransaction">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+          </Key>
+          <Property Name="AutoKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WBID" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="TranType" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDocNum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDocType" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="SourceSystem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMessageID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcMessageTime" Type="DateTime" Precision="3" />
+          <Property Name="SrcDocStatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Src_ExpectedWtKg" Type="Decimal" Precision="7" Scale="0" />
+          <Property Name="Src_ExpectedDate" Type="DateTime" Precision="0" />
+          <Property Name="Src_ExpectedReg" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Src_ExpectedDriver" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Src_AllowedTolUnder" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="Src_AllowedTolOver" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="Src_PO_CumulativeDlvy" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="SrcDoc_ChangeTime" Type="DateTime" Precision="3" />
+          <Property Name="SrcDoc_ChangeUser" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Src_IntegrationTime" Type="DateTime" Precision="3" />
+          <Property Name="Src_IntegrationUser" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDoc_PartnerNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcDoc_PartnerType" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Src_RefDocCount" Type="Int16" />
+          <Property Name="Src_ExpiryDays" Type="Int16" />
+          <Property Name="WWMessageStatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="WWProcessedtime" Type="DateTime" Precision="3" />
+          <Property Name="SrcDoc_PartnerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BulkFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="VendorName" Type="String" MaxLength="35" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="zTraceIn_MB51Data">
+          <Key>
+            <PropertyRef Name="SysID" />
+            <PropertyRef Name="MANDT" />
+            <PropertyRef Name="MBLNR" />
+            <PropertyRef Name="MJAHR" />
+            <PropertyRef Name="ZEILE" />
+          </Key>
+          <Property Name="SysID" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="MANDT" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="MBLNR" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MJAHR" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="ZEILE" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="MATNR" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="WERKS" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="LGORT" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="CHARG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BWART" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="BUDAT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SHKZG" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ERFMG" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ERFME" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="VGART" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="BUKRS" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="GJAHR" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="MONAT" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="BUDAT_date" Type="DateTime" Precision="0" />
+          <Property Name="FinPerKey" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ReadStatus" Type="Decimal" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="zTraceIn_SAPConfirmations">
+          <Key>
+            <PropertyRef Name="SysID" />
+            <PropertyRef Name="MANDT" />
+            <PropertyRef Name="MBLNR" />
+            <PropertyRef Name="MJAHR" />
+            <PropertyRef Name="ZEILE" />
+          </Key>
+          <Property Name="SysID" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="MANDT" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="MBLNR" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MJAHR" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="ZEILE" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="MATNR" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="WERKS" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="LGORT" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="CHARG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BWART" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="BUDAT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SHKZG" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ERFMG" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="ERFME" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="VGART" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="BUKRS" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="GJAHR" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="MONAT" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="CPUDT" Type="DateTime" Precision="0" />
+          <Property Name="CPUTM" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Export_Date" Type="DateTime" Precision="0" />
+          <Property Name="Export_Time" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="BUDAT_date" Type="DateTime" Precision="0" />
+          <Property Name="FinPerKey" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ERFMGKgVal" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="ConfShiftId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ReadStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="zTraceIn_SAPDeliveryHdrs">
+          <Key>
+            <PropertyRef Name="SourceSystem" />
+            <PropertyRef Name="SrcRefDocNr" />
+            <PropertyRef Name="ExportDate" />
+            <PropertyRef Name="ExportTime" />
+          </Key>
+          <Property Name="AutoKey" Type="Int32" />
+          <Property Name="SourceSystem" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcRefDocNr" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ExportDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ExportTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="VSTEL" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="VKORG" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="LFART" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="KFGRP" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="TCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="INCO2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VBTYP" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="BRGEW" Type="Decimal" Precision="13" Scale="3" />
+          <Property Name="NTGEW" Type="Decimal" Precision="13" Scale="3" />
+          <Property Name="GEWEI" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="zTraceIn_SAPDeliveryLines">
+          <Key>
+            <PropertyRef Name="SourceSystem" />
+            <PropertyRef Name="SrcRefDocNr" />
+            <PropertyRef Name="POSNR" />
+            <PropertyRef Name="ExportDate" />
+            <PropertyRef Name="ExportTime" />
+          </Key>
+          <Property Name="AutoKey" Type="Int32" />
+          <Property Name="SourceSystem" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcRefDocNr" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="POSNR" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ExportDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ExportTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="MATNR" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="WERKS" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="LFIMG" Type="Decimal" Precision="13" Scale="3" />
+          <Property Name="MEINS" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="LGORT" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="VRKME" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="MTART" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BRGEW" Type="Decimal" Precision="13" Scale="3" />
+          <Property Name="NTGEW" Type="Decimal" Precision="13" Scale="3" />
+          <Property Name="GEWEI" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="zTraceIn_SAPMaterials">
+          <Key>
+            <PropertyRef Name="SYSID" />
+            <PropertyRef Name="MANDT" />
+            <PropertyRef Name="WERKS" />
+            <PropertyRef Name="MATNR" />
+          </Key>
+          <Property Name="SYSID" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="MANDT" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="WERKS" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="MATNR" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="MAKTX" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="GTIN_CON" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="GTIN_HU" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="GTIN_Level1" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="GTIN_Level2" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="NetWt_CON" Type="Decimal" Nullable="false" Precision="13" Scale="3" />
+          <Property Name="NetWt_HU" Type="Decimal" Nullable="false" Precision="13" Scale="3" />
+          <Property Name="NetWt_Level1" Type="Decimal" Precision="13" Scale="3" />
+          <Property Name="NetWt_Level2" Type="Decimal" Precision="13" Scale="3" />
+          <Property Name="TareWt_CON" Type="Decimal" Precision="13" Scale="3" />
+          <Property Name="TareWt_HU" Type="Decimal" Precision="13" Scale="3" />
+          <Property Name="TareWt_Level1" Type="Decimal" Precision="13" Scale="3" />
+          <Property Name="TareWt_Level2" Type="Decimal" Precision="13" Scale="3" />
+          <Property Name="HUQty_CON" Type="Decimal" Nullable="false" Precision="13" Scale="3" />
+          <Property Name="HUQty_Level1" Type="Decimal" Nullable="false" Precision="13" Scale="3" />
+          <Property Name="HUQty_Level2" Type="Decimal" Nullable="false" Precision="13" Scale="3" />
+          <Property Name="SAPUOM_CON" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="SAPUOM_HU" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="SAPUOM_Level1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="SAPUOM_Level2" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="SAPUOM_Base" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="SAPUOM_Sales" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="QCUOM" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="WtCatUOM" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ProductType" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ProductWtCat" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+          <Property Name="BulkFlag" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="DateFirstAdded" Type="DateTime" Precision="0" />
+          <Property Name="DateLastUpdated" Type="DateTime" Precision="0" />
+          <Property Name="ReadStatus" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="Retired" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="RetirementDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="zTraceOut_DeliveryHdr">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+            <PropertyRef Name="SourceSystem" />
+            <PropertyRef Name="SrcRefDocNr" />
+            <PropertyRef Name="LoadingTime" />
+          </Key>
+          <Property Name="AutoKey" Type="Int32" Nullable="false" />
+          <Property Name="SourceSystem" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcRefDocNr" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="LoadingTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="WERKS" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="LoadingBay" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="DriverName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TruckRegNo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Trailer1RegNo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Trailer2RegNo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="OperatorID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="zTraceOut_DeliveryLines">
+          <Key>
+            <PropertyRef Name="AutoKey" />
+            <PropertyRef Name="SourceSystem" />
+            <PropertyRef Name="SrcRefDocNr" />
+            <PropertyRef Name="LoadingTime" />
+            <PropertyRef Name="POSNR" />
+            <PropertyRef Name="LinePalletNo" />
+          </Key>
+          <Property Name="AutoKey" Type="Int32" Nullable="false" />
+          <Property Name="SourceSystem" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SrcRefDocNr" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="LoadingTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="POSNR" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="LinePalletNo" Type="Int32" Nullable="false" />
+          <Property Name="SSCC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StorageBay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="LoadingBay" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="OperatorID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="zTraceOut_SSCCMovements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SSCC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WaypointID" Type="Int32" Nullable="false" />
+          <Property Name="WaypointTime" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="MovementDirection" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="MovementDesc" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="OperatorID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="NewStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MovementTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="zTraceOut_SSCCUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WERKS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MATNR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SSCC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WaypointId" Type="Int32" />
+          <Property Name="Waypoint" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="CreatedTime" Type="Time" Precision="7" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ActualWeight" Type="Double" />
+          <Property Name="ScannedGTIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Label_GTIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Label_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Label_Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PData_DateCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PData_DateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PData_BatchCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PData_BestBefore" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PDet_PCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PDet_OrdUnits" Type="Int32" />
+          <Property Name="PDet_ConsUnits" Type="Int32" />
+          <Property Name="PDet_NetWt" Type="Double" />
+        </EntityType>
+        <EntityType Name="zTraceOut_Waypoints">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlantId" Type="Int32" />
+          <Property Name="LocationDesc" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAP_ModelStoreContainer" CdmEntityContainer="zzSAPIntegrationTSHEntities">
+          <EntitySetMapping Name="SAPInvoices">
+            <EntityTypeMapping TypeName="SAP_Model.SAPInvoice">
+              <MappingFragment StoreEntitySet="SAPInvoices">
+                <ScalarProperty Name="Src_IntegrationUser" ColumnName="Src_IntegrationUser" />
+                <ScalarProperty Name="Src_IntegrationTime" ColumnName="Src_IntegrationTime" />
+                <ScalarProperty Name="SrcDoc_ChangeUser" ColumnName="SrcDoc_ChangeUser" />
+                <ScalarProperty Name="SrcDoc_PostingTime" ColumnName="SrcDoc_PostingTime" />
+                <ScalarProperty Name="SrcDoc_PostingDate" ColumnName="SrcDoc_PostingDate" />
+                <ScalarProperty Name="Src_InvoicedWtKg" ColumnName="Src_InvoicedWtKg" />
+                <ScalarProperty Name="SrcRefDocNr" ColumnName="SrcRefDocNr" />
+                <ScalarProperty Name="SrcDocStatus" ColumnName="SrcDocStatus" />
+                <ScalarProperty Name="SrcInvoiceNo" ColumnName="SrcInvoiceNo" />
+                <ScalarProperty Name="SrcMessageTime" ColumnName="SrcMessageTime" />
+                <ScalarProperty Name="SrcMessageID" ColumnName="SrcMessageID" />
+                <ScalarProperty Name="SourceSystem" ColumnName="SourceSystem" />
+                <ScalarProperty Name="AutoKey" ColumnName="AutoKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAPMtlDocs">
+            <EntityTypeMapping TypeName="SAP_Model.SAPMtlDoc">
+              <MappingFragment StoreEntitySet="SAPMtlDocs">
+                <ScalarProperty Name="WWProcessedtime" ColumnName="WWProcessedtime" />
+                <ScalarProperty Name="WWMessageStatus" ColumnName="WWMessageStatus" />
+                <ScalarProperty Name="Src_IntegrationUser" ColumnName="Src_IntegrationUser" />
+                <ScalarProperty Name="Src_IntegrationTime" ColumnName="Src_IntegrationTime" />
+                <ScalarProperty Name="Src_GRTime" ColumnName="Src_GRTime" />
+                <ScalarProperty Name="Src_GRDate" ColumnName="Src_GRDate" />
+                <ScalarProperty Name="Src_GRUser" ColumnName="Src_GRUser" />
+                <ScalarProperty Name="Src_GRUOM" ColumnName="Src_GRUOM" />
+                <ScalarProperty Name="Src_GRQty" ColumnName="Src_GRQty" />
+                <ScalarProperty Name="Src_MATNR" ColumnName="Src_MATNR" />
+                <ScalarProperty Name="Src_PONumber" ColumnName="Src_PONumber" />
+                <ScalarProperty Name="Src_BillOfLading" ColumnName="Src_BillOfLading" />
+                <ScalarProperty Name="Src_HeaderText" ColumnName="Src_HeaderText" />
+                <ScalarProperty Name="Src_DeliveryNoteNo" ColumnName="Src_DeliveryNoteNo" />
+                <ScalarProperty Name="Src_MovementType" ColumnName="Src_MovementType" />
+                <ScalarProperty Name="Src_PostingDate" ColumnName="Src_PostingDate" />
+                <ScalarProperty Name="Src_MtlDcDate" ColumnName="Src_MtlDcDate" />
+                <ScalarProperty Name="SrcDocStatus" ColumnName="SrcDocStatus" />
+                <ScalarProperty Name="SrcMessageActive" ColumnName="SrcMessageActive" />
+                <ScalarProperty Name="SrcMessageTime" ColumnName="SrcMessageTime" />
+                <ScalarProperty Name="SrcMessageID" ColumnName="SrcMessageID" />
+                <ScalarProperty Name="SrcMtlDocLine" ColumnName="SrcMtlDocLine" />
+                <ScalarProperty Name="SrcMtlDocType" ColumnName="SrcMtlDocType" />
+                <ScalarProperty Name="SrcMtlDocYear" ColumnName="SrcMtlDocYear" />
+                <ScalarProperty Name="SrcMtlDocNum" ColumnName="SrcMtlDocNum" />
+                <ScalarProperty Name="SourceSystem" ColumnName="SourceSystem" />
+                <ScalarProperty Name="TranType" ColumnName="TranType" />
+                <ScalarProperty Name="WBID" ColumnName="WBID" />
+                <ScalarProperty Name="AutoKey" ColumnName="AutoKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAPTransactions">
+            <EntityTypeMapping TypeName="SAP_Model.SAPTransaction">
+              <MappingFragment StoreEntitySet="SAPTransactions">
+                <ScalarProperty Name="SrcDoc_BSTNK" ColumnName="SrcDoc_BSTNK" />
+                <ScalarProperty Name="SrcDoc_VBELN_VA" ColumnName="SrcDoc_VBELN_VA" />
+                <ScalarProperty Name="SrcDoc_KUNNR_NAME" ColumnName="SrcDoc_KUNNR_NAME" />
+                <ScalarProperty Name="SrcDoc_KUNAG_NAME" ColumnName="SrcDoc_KUNAG_NAME" />
+                <ScalarProperty Name="Src_IntegrationUser" ColumnName="Src_IntegrationUser" />
+                <ScalarProperty Name="Src_IntegrationTime" ColumnName="Src_IntegrationTime" />
+                <ScalarProperty Name="SrcDoc_ChangeUser" ColumnName="SrcDoc_ChangeUser" />
+                <ScalarProperty Name="SrcDoc_ChangeTime" ColumnName="SrcDoc_ChangeTime" />
+                <ScalarProperty Name="SrcDoc_KUNNR" ColumnName="SrcDoc_KUNNR" />
+                <ScalarProperty Name="SrcDoc_KUNAG" ColumnName="SrcDoc_KUNAG" />
+                <ScalarProperty Name="SrcRefDocNr" ColumnName="SrcRefDocNr" />
+                <ScalarProperty Name="Src_ExpectedWtKg" ColumnName="Src_ExpectedWtKg" />
+                <ScalarProperty Name="SrcDocStatus" ColumnName="SrcDocStatus" />
+                <ScalarProperty Name="SrcMessageTime" ColumnName="SrcMessageTime" />
+                <ScalarProperty Name="SrcMessageID" ColumnName="SrcMessageID" />
+                <ScalarProperty Name="SourceSystem" ColumnName="SourceSystem" />
+                <ScalarProperty Name="AutoKey" ColumnName="AutoKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WBCompletedWeighings">
+            <EntityTypeMapping TypeName="SAP_Model.WBCompletedWeighing">
+              <MappingFragment StoreEntitySet="WBCompletedWeighings">
+                <ScalarProperty Name="TotalPalletWeightKgs" ColumnName="TotalPalletWeightKgs" />
+                <ScalarProperty Name="TotalPalletWeight" ColumnName="TotalPalletWeight" />
+                <ScalarProperty Name="TotalPalletCount" ColumnName="TotalPalletCount" />
+                <ScalarProperty Name="WW_TicketNo" ColumnName="WW_TicketNo" />
+                <ScalarProperty Name="SrcProcessedtime" ColumnName="SrcProcessedtime" />
+                <ScalarProperty Name="SrcMessageStatus" ColumnName="SrcMessageStatus" />
+                <ScalarProperty Name="VendorDeliveryRef" ColumnName="VendorDeliveryRef" />
+                <ScalarProperty Name="WW_W2_MASS" ColumnName="WW_W2_MASS" />
+                <ScalarProperty Name="WW_W2_T" ColumnName="WW_W2_T" />
+                <ScalarProperty Name="WW_W2_D" ColumnName="WW_W2_D" />
+                <ScalarProperty Name="WW_W1_MASS" ColumnName="WW_W1_MASS" />
+                <ScalarProperty Name="WW_W1_T" ColumnName="WW_W1_T" />
+                <ScalarProperty Name="WW_W1_D" ColumnName="WW_W1_D" />
+                <ScalarProperty Name="WW_PO_CumulativeDlvy" ColumnName="WW_PO_CumulativeDlvy" />
+                <ScalarProperty Name="WW_ActualDeviationOver" ColumnName="WW_ActualDeviationOver" />
+                <ScalarProperty Name="WW_ActualDeviationUnder" ColumnName="WW_ActualDeviationUnder" />
+                <ScalarProperty Name="WW_ActualDriver" ColumnName="WW_ActualDriver" />
+                <ScalarProperty Name="WW_ActualReg" ColumnName="WW_ActualReg" />
+                <ScalarProperty Name="WW_ActualDate" ColumnName="WW_ActualDate" />
+                <ScalarProperty Name="WW_ActualWtKg" ColumnName="WW_ActualWtKg" />
+                <ScalarProperty Name="WW_Direction" ColumnName="WW_Direction" />
+                <ScalarProperty Name="WWMessageTime" ColumnName="WWMessageTime" />
+                <ScalarProperty Name="WWMessageID" ColumnName="WWMessageID" />
+                <ScalarProperty Name="SourceSystem" ColumnName="SourceSystem" />
+                <ScalarProperty Name="SrcDocType" ColumnName="SrcDocType" />
+                <ScalarProperty Name="SrcDocNum" ColumnName="SrcDocNum" />
+                <ScalarProperty Name="TranType" ColumnName="TranType" />
+                <ScalarProperty Name="WBID" ColumnName="WBID" />
+                <ScalarProperty Name="AutoKey" ColumnName="AutoKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WBEvents">
+            <EntityTypeMapping TypeName="SAP_Model.WBEvent">
+              <MappingFragment StoreEntitySet="WBEvents">
+                <ScalarProperty Name="WW_EventType" ColumnName="WW_EventType" />
+                <ScalarProperty Name="WW_TicketNo" ColumnName="WW_TicketNo" />
+                <ScalarProperty Name="WW_Wx_MASS" ColumnName="WW_Wx_MASS" />
+                <ScalarProperty Name="WW_Wx_T" ColumnName="WW_Wx_T" />
+                <ScalarProperty Name="WW_Wx_D" ColumnName="WW_Wx_D" />
+                <ScalarProperty Name="WW_WeighingStage" ColumnName="WW_WeighingStage" />
+                <ScalarProperty Name="WW_ActualDriver" ColumnName="WW_ActualDriver" />
+                <ScalarProperty Name="WW_ActualReg" ColumnName="WW_ActualReg" />
+                <ScalarProperty Name="WW_ActualDate" ColumnName="WW_ActualDate" />
+                <ScalarProperty Name="WW_ActualWtKg" ColumnName="WW_ActualWtKg" />
+                <ScalarProperty Name="WWMessageTime" ColumnName="WWMessageTime" />
+                <ScalarProperty Name="WWMessageID" ColumnName="WWMessageID" />
+                <ScalarProperty Name="SourceSystem" ColumnName="SourceSystem" />
+                <ScalarProperty Name="SrcDocType" ColumnName="SrcDocType" />
+                <ScalarProperty Name="SrcDocNum" ColumnName="SrcDocNum" />
+                <ScalarProperty Name="TranType" ColumnName="TranType" />
+                <ScalarProperty Name="WBID" ColumnName="WBID" />
+                <ScalarProperty Name="AutoKey" ColumnName="AutoKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WBTransactions">
+            <EntityTypeMapping TypeName="SAP_Model.WBTransaction">
+              <MappingFragment StoreEntitySet="WBTransactions">
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="BulkFlag" ColumnName="BulkFlag" />
+                <ScalarProperty Name="SrcDoc_PartnerName" ColumnName="SrcDoc_PartnerName" />
+                <ScalarProperty Name="WWProcessedtime" ColumnName="WWProcessedtime" />
+                <ScalarProperty Name="WWMessageStatus" ColumnName="WWMessageStatus" />
+                <ScalarProperty Name="Src_ExpiryDays" ColumnName="Src_ExpiryDays" />
+                <ScalarProperty Name="Src_RefDocCount" ColumnName="Src_RefDocCount" />
+                <ScalarProperty Name="SrcDoc_PartnerType" ColumnName="SrcDoc_PartnerType" />
+                <ScalarProperty Name="SrcDoc_PartnerNumber" ColumnName="SrcDoc_PartnerNumber" />
+                <ScalarProperty Name="Src_IntegrationUser" ColumnName="Src_IntegrationUser" />
+                <ScalarProperty Name="Src_IntegrationTime" ColumnName="Src_IntegrationTime" />
+                <ScalarProperty Name="SrcDoc_ChangeUser" ColumnName="SrcDoc_ChangeUser" />
+                <ScalarProperty Name="SrcDoc_ChangeTime" ColumnName="SrcDoc_ChangeTime" />
+                <ScalarProperty Name="Src_PO_CumulativeDlvy" ColumnName="Src_PO_CumulativeDlvy" />
+                <ScalarProperty Name="Src_AllowedTolOver" ColumnName="Src_AllowedTolOver" />
+                <ScalarProperty Name="Src_AllowedTolUnder" ColumnName="Src_AllowedTolUnder" />
+                <ScalarProperty Name="Src_ExpectedDriver" ColumnName="Src_ExpectedDriver" />
+                <ScalarProperty Name="Src_ExpectedReg" ColumnName="Src_ExpectedReg" />
+                <ScalarProperty Name="Src_ExpectedDate" ColumnName="Src_ExpectedDate" />
+                <ScalarProperty Name="Src_ExpectedWtKg" ColumnName="Src_ExpectedWtKg" />
+                <ScalarProperty Name="SrcDocStatus" ColumnName="SrcDocStatus" />
+                <ScalarProperty Name="SrcMessageTime" ColumnName="SrcMessageTime" />
+                <ScalarProperty Name="SrcMessageID" ColumnName="SrcMessageID" />
+                <ScalarProperty Name="SourceSystem" ColumnName="SourceSystem" />
+                <ScalarProperty Name="SrcDocType" ColumnName="SrcDocType" />
+                <ScalarProperty Name="SrcDocNum" ColumnName="SrcDocNum" />
+                <ScalarProperty Name="TranType" ColumnName="TranType" />
+                <ScalarProperty Name="WBID" ColumnName="WBID" />
+                <ScalarProperty Name="AutoKey" ColumnName="AutoKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zTraceIn_MB51Data">
+            <EntityTypeMapping TypeName="SAP_Model.zTraceIn_MB51Data">
+              <MappingFragment StoreEntitySet="zTraceIn_MB51Data">
+                <ScalarProperty Name="ReadStatus" ColumnName="ReadStatus" />
+                <ScalarProperty Name="FinPerKey" ColumnName="FinPerKey" />
+                <ScalarProperty Name="BUDAT_date" ColumnName="BUDAT_date" />
+                <ScalarProperty Name="MONAT" ColumnName="MONAT" />
+                <ScalarProperty Name="GJAHR" ColumnName="GJAHR" />
+                <ScalarProperty Name="BUKRS" ColumnName="BUKRS" />
+                <ScalarProperty Name="VGART" ColumnName="VGART" />
+                <ScalarProperty Name="ERFME" ColumnName="ERFME" />
+                <ScalarProperty Name="ERFMG" ColumnName="ERFMG" />
+                <ScalarProperty Name="SHKZG" ColumnName="SHKZG" />
+                <ScalarProperty Name="BUDAT" ColumnName="BUDAT" />
+                <ScalarProperty Name="BWART" ColumnName="BWART" />
+                <ScalarProperty Name="CHARG" ColumnName="CHARG" />
+                <ScalarProperty Name="LGORT" ColumnName="LGORT" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="ZEILE" ColumnName="ZEILE" />
+                <ScalarProperty Name="MJAHR" ColumnName="MJAHR" />
+                <ScalarProperty Name="MBLNR" ColumnName="MBLNR" />
+                <ScalarProperty Name="MANDT" ColumnName="MANDT" />
+                <ScalarProperty Name="SysID" ColumnName="SysID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zTraceIn_SAPConfirmations">
+            <EntityTypeMapping TypeName="SAP_Model.zTraceIn_SAPConfirmations">
+              <MappingFragment StoreEntitySet="zTraceIn_SAPConfirmations">
+                <ScalarProperty Name="ReadStatus" ColumnName="ReadStatus" />
+                <ScalarProperty Name="ConfShiftId" ColumnName="ConfShiftId" />
+                <ScalarProperty Name="ERFMGKgVal" ColumnName="ERFMGKgVal" />
+                <ScalarProperty Name="FinPerKey" ColumnName="FinPerKey" />
+                <ScalarProperty Name="BUDAT_date" ColumnName="BUDAT_date" />
+                <ScalarProperty Name="Export_Time" ColumnName="Export_Time" />
+                <ScalarProperty Name="Export_Date" ColumnName="Export_Date" />
+                <ScalarProperty Name="CPUTM" ColumnName="CPUTM" />
+                <ScalarProperty Name="CPUDT" ColumnName="CPUDT" />
+                <ScalarProperty Name="MONAT" ColumnName="MONAT" />
+                <ScalarProperty Name="GJAHR" ColumnName="GJAHR" />
+                <ScalarProperty Name="BUKRS" ColumnName="BUKRS" />
+                <ScalarProperty Name="VGART" ColumnName="VGART" />
+                <ScalarProperty Name="ERFME" ColumnName="ERFME" />
+                <ScalarProperty Name="ERFMG" ColumnName="ERFMG" />
+                <ScalarProperty Name="SHKZG" ColumnName="SHKZG" />
+                <ScalarProperty Name="BUDAT" ColumnName="BUDAT" />
+                <ScalarProperty Name="BWART" ColumnName="BWART" />
+                <ScalarProperty Name="CHARG" ColumnName="CHARG" />
+                <ScalarProperty Name="LGORT" ColumnName="LGORT" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="ZEILE" ColumnName="ZEILE" />
+                <ScalarProperty Name="MJAHR" ColumnName="MJAHR" />
+                <ScalarProperty Name="MBLNR" ColumnName="MBLNR" />
+                <ScalarProperty Name="MANDT" ColumnName="MANDT" />
+                <ScalarProperty Name="SysID" ColumnName="SysID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zTraceIn_SAPDeliveryHdrs">
+            <EntityTypeMapping TypeName="SAP_Model.zTraceIn_SAPDeliveryHdrs">
+              <MappingFragment StoreEntitySet="zTraceIn_SAPDeliveryHdrs">
+                <ScalarProperty Name="GEWEI" ColumnName="GEWEI" />
+                <ScalarProperty Name="NTGEW" ColumnName="NTGEW" />
+                <ScalarProperty Name="BRGEW" ColumnName="BRGEW" />
+                <ScalarProperty Name="VBTYP" ColumnName="VBTYP" />
+                <ScalarProperty Name="INCO2" ColumnName="INCO2" />
+                <ScalarProperty Name="TCODE" ColumnName="TCODE" />
+                <ScalarProperty Name="KFGRP" ColumnName="KFGRP" />
+                <ScalarProperty Name="LFART" ColumnName="LFART" />
+                <ScalarProperty Name="VKORG" ColumnName="VKORG" />
+                <ScalarProperty Name="VSTEL" ColumnName="VSTEL" />
+                <ScalarProperty Name="ExportTime" ColumnName="ExportTime" />
+                <ScalarProperty Name="ExportDate" ColumnName="ExportDate" />
+                <ScalarProperty Name="SrcRefDocNr" ColumnName="SrcRefDocNr" />
+                <ScalarProperty Name="SourceSystem" ColumnName="SourceSystem" />
+                <ScalarProperty Name="AutoKey" ColumnName="AutoKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zTraceIn_SAPDeliveryLines">
+            <EntityTypeMapping TypeName="SAP_Model.zTraceIn_SAPDeliveryLines">
+              <MappingFragment StoreEntitySet="zTraceIn_SAPDeliveryLines">
+                <ScalarProperty Name="GEWEI" ColumnName="GEWEI" />
+                <ScalarProperty Name="NTGEW" ColumnName="NTGEW" />
+                <ScalarProperty Name="BRGEW" ColumnName="BRGEW" />
+                <ScalarProperty Name="MTART" ColumnName="MTART" />
+                <ScalarProperty Name="VRKME" ColumnName="VRKME" />
+                <ScalarProperty Name="LGORT" ColumnName="LGORT" />
+                <ScalarProperty Name="MEINS" ColumnName="MEINS" />
+                <ScalarProperty Name="LFIMG" ColumnName="LFIMG" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="ExportTime" ColumnName="ExportTime" />
+                <ScalarProperty Name="ExportDate" ColumnName="ExportDate" />
+                <ScalarProperty Name="POSNR" ColumnName="POSNR" />
+                <ScalarProperty Name="SrcRefDocNr" ColumnName="SrcRefDocNr" />
+                <ScalarProperty Name="SourceSystem" ColumnName="SourceSystem" />
+                <ScalarProperty Name="AutoKey" ColumnName="AutoKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zTraceIn_SAPMaterials">
+            <EntityTypeMapping TypeName="SAP_Model.zTraceIn_SAPMaterials">
+              <MappingFragment StoreEntitySet="zTraceIn_SAPMaterials">
+                <ScalarProperty Name="RetirementDate" ColumnName="RetirementDate" />
+                <ScalarProperty Name="Retired" ColumnName="Retired" />
+                <ScalarProperty Name="ReadStatus" ColumnName="ReadStatus" />
+                <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+                <ScalarProperty Name="DateFirstAdded" ColumnName="DateFirstAdded" />
+                <ScalarProperty Name="BulkFlag" ColumnName="BulkFlag" />
+                <ScalarProperty Name="ProductWtCat" ColumnName="ProductWtCat" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="WtCatUOM" ColumnName="WtCatUOM" />
+                <ScalarProperty Name="QCUOM" ColumnName="QCUOM" />
+                <ScalarProperty Name="SAPUOM_Sales" ColumnName="SAPUOM_Sales" />
+                <ScalarProperty Name="SAPUOM_Base" ColumnName="SAPUOM_Base" />
+                <ScalarProperty Name="SAPUOM_Level2" ColumnName="SAPUOM_Level2" />
+                <ScalarProperty Name="SAPUOM_Level1" ColumnName="SAPUOM_Level1" />
+                <ScalarProperty Name="SAPUOM_HU" ColumnName="SAPUOM_HU" />
+                <ScalarProperty Name="SAPUOM_CON" ColumnName="SAPUOM_CON" />
+                <ScalarProperty Name="HUQty_Level2" ColumnName="HUQty_Level2" />
+                <ScalarProperty Name="HUQty_Level1" ColumnName="HUQty_Level1" />
+                <ScalarProperty Name="HUQty_CON" ColumnName="HUQty_CON" />
+                <ScalarProperty Name="TareWt_Level2" ColumnName="TareWt_Level2" />
+                <ScalarProperty Name="TareWt_Level1" ColumnName="TareWt_Level1" />
+                <ScalarProperty Name="TareWt_HU" ColumnName="TareWt_HU" />
+                <ScalarProperty Name="TareWt_CON" ColumnName="TareWt_CON" />
+                <ScalarProperty Name="NetWt_Level2" ColumnName="NetWt_Level2" />
+                <ScalarProperty Name="NetWt_Level1" ColumnName="NetWt_Level1" />
+                <ScalarProperty Name="NetWt_HU" ColumnName="NetWt_HU" />
+                <ScalarProperty Name="NetWt_CON" ColumnName="NetWt_CON" />
+                <ScalarProperty Name="GTIN_Level2" ColumnName="GTIN_Level2" />
+                <ScalarProperty Name="GTIN_Level1" ColumnName="GTIN_Level1" />
+                <ScalarProperty Name="GTIN_HU" ColumnName="GTIN_HU" />
+                <ScalarProperty Name="GTIN_CON" ColumnName="GTIN_CON" />
+                <ScalarProperty Name="MAKTX" ColumnName="MAKTX" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="MANDT" ColumnName="MANDT" />
+                <ScalarProperty Name="SYSID" ColumnName="SYSID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zTraceOut_DeliveryHdr">
+            <EntityTypeMapping TypeName="SAP_Model.zTraceOut_DeliveryHdr">
+              <MappingFragment StoreEntitySet="zTraceOut_DeliveryHdr">
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+                <ScalarProperty Name="Trailer2RegNo" ColumnName="Trailer2RegNo" />
+                <ScalarProperty Name="Trailer1RegNo" ColumnName="Trailer1RegNo" />
+                <ScalarProperty Name="TruckRegNo" ColumnName="TruckRegNo" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="LoadingBay" ColumnName="LoadingBay" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="LoadingTime" ColumnName="LoadingTime" />
+                <ScalarProperty Name="SrcRefDocNr" ColumnName="SrcRefDocNr" />
+                <ScalarProperty Name="SourceSystem" ColumnName="SourceSystem" />
+                <ScalarProperty Name="AutoKey" ColumnName="AutoKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zTraceOut_DeliveryLines">
+            <EntityTypeMapping TypeName="SAP_Model.zTraceOut_DeliveryLines">
+              <MappingFragment StoreEntitySet="zTraceOut_DeliveryLines">
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+                <ScalarProperty Name="LoadingBay" ColumnName="LoadingBay" />
+                <ScalarProperty Name="StorageBay" ColumnName="StorageBay" />
+                <ScalarProperty Name="SSCC" ColumnName="SSCC" />
+                <ScalarProperty Name="LinePalletNo" ColumnName="LinePalletNo" />
+                <ScalarProperty Name="POSNR" ColumnName="POSNR" />
+                <ScalarProperty Name="LoadingTime" ColumnName="LoadingTime" />
+                <ScalarProperty Name="SrcRefDocNr" ColumnName="SrcRefDocNr" />
+                <ScalarProperty Name="SourceSystem" ColumnName="SourceSystem" />
+                <ScalarProperty Name="AutoKey" ColumnName="AutoKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zTraceOut_SSCCMovements">
+            <EntityTypeMapping TypeName="SAP_Model.zTraceOut_SSCCMovements">
+              <MappingFragment StoreEntitySet="zTraceOut_SSCCMovements">
+                <ScalarProperty Name="MovementTime" ColumnName="MovementTime" />
+                <ScalarProperty Name="NewStatus" ColumnName="NewStatus" />
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+                <ScalarProperty Name="MovementDesc" ColumnName="MovementDesc" />
+                <ScalarProperty Name="MovementDirection" ColumnName="MovementDirection" />
+                <ScalarProperty Name="WaypointTime" ColumnName="WaypointTime" />
+                <ScalarProperty Name="WaypointID" ColumnName="WaypointID" />
+                <ScalarProperty Name="SSCC" ColumnName="SSCC" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zTraceOut_SSCCUnit">
+            <EntityTypeMapping TypeName="SAP_Model.zTraceOut_SSCCUnit">
+              <MappingFragment StoreEntitySet="zTraceOut_SSCCUnit">
+                <ScalarProperty Name="PDet_NetWt" ColumnName="PDet_NetWt" />
+                <ScalarProperty Name="PDet_ConsUnits" ColumnName="PDet_ConsUnits" />
+                <ScalarProperty Name="PDet_OrdUnits" ColumnName="PDet_OrdUnits" />
+                <ScalarProperty Name="PDet_PCode" ColumnName="PDet_PCode" />
+                <ScalarProperty Name="PData_BestBefore" ColumnName="PData_BestBefore" />
+                <ScalarProperty Name="PData_BatchCode" ColumnName="PData_BatchCode" />
+                <ScalarProperty Name="PData_DateTime" ColumnName="PData_DateTime" />
+                <ScalarProperty Name="PData_DateCode" ColumnName="PData_DateCode" />
+                <ScalarProperty Name="Label_Country" ColumnName="Label_Country" />
+                <ScalarProperty Name="Label_Description" ColumnName="Label_Description" />
+                <ScalarProperty Name="Label_GTIN" ColumnName="Label_GTIN" />
+                <ScalarProperty Name="ScannedGTIN" ColumnName="ScannedGTIN" />
+                <ScalarProperty Name="ActualWeight" ColumnName="ActualWeight" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Waypoint" ColumnName="Waypoint" />
+                <ScalarProperty Name="WaypointId" ColumnName="WaypointId" />
+                <ScalarProperty Name="SSCC" ColumnName="SSCC" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zTraceOut_Waypoints">
+            <EntityTypeMapping TypeName="SAP_Model.zTraceOut_Waypoints">
+              <MappingFragment StoreEntitySet="zTraceOut_Waypoints">
+                <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

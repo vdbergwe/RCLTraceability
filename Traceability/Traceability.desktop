@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Traceability
+Comment=
+Exec=  sh /home/omegadata/launcher.sh
+StartupNotify=false
+Terminal=true
+Hidden=false

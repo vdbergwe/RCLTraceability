@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ab1525d026c94ca8baf1f883263f53d5" Name="Diagram1">
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.AspNetUsers_Extended" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Business_Units" Width="1.5" PointX="0.75" PointY="18.625" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Business_Units_Plants" Width="1.5" PointX="3" PointY="17.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Device" Width="1.5" PointX="9.75" PointY="14.5" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Devices_Operators" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Financial_Periods" Width="1.5" PointX="5.25" PointY="28.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Handling_Units" Width="1.5" PointX="9.75" PointY="26.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Handling_Units_Movements" Width="1.5" PointX="12" PointY="27" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Integration_SSCC" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Integration_SyncLogs" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Loadslip" Width="1.5" PointX="12.75" PointY="1.125" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Loadslips_Details" Width="1.5" PointX="15" PointY="1.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Log" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Plants_Locations" Width="1.5" PointX="5.25" PointY="11.375" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Plants_Shifts" Width="1.5" PointX="5.25" PointY="23.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Production_Batches" Width="1.5" PointX="7.5" PointY="24.125" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Product" Width="1.5" PointX="10.5" PointY="4.5" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.QC_Scales" Width="1.5" PointX="5.25" PointY="7" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.QC_Scales_Readings" Width="1.5" PointX="12.75" PointY="16.375" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.QC_Scales_Stations" Width="1.5" PointX="7.5" PointY="10.375" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.ShiftForemansReport" Width="1.5" PointX="9.75" PointY="22.25" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Software_Development" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Software_Dropdowns" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Software_Packages" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Software_Services" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Software_Settings" Width="1.5" PointX="11.75" PointY="10.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Stock" Width="1.5" PointX="5.25" PointY="18.5" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Stock_Movements" Width="1.5" PointX="7.5" PointY="19" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.sysdiagram" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Vehicle" Width="1.5" PointX="13.75" PointY="10.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Waypoint" Width="1.5" PointX="7.5" PointY="14.25" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Waypoints_Configurations" Width="1.5" PointX="9.75" PointY="10.75" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Waypoints_NumberBanks" Width="1.5" PointX="7.5" PointY="28.875" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Business_Units_Plants_Business_Units" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Financial_Periods_Business_Units_Plants" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Plants_Locations_Business_Units_Plants" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Plants_Shifts_Business_Units_Plants" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_ShiftForemansReport_Business_Units_Plants" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Stock_Business_Units_Plants" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Devices_Waypoints" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Handling_Units_Movements_Handling_Units" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Handling_Units_Production_Batches" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Handling_Units_Products1" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Handling_Units_Waypoints_NumberBanks" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Loadslips_Details_Loadslips" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_QC_Scales_Stations_Plants_Locations" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Waypoints_Devices_Plants_Locations" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Production_Batches_Plants_Shifts" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_ShiftForemansReport_Plants_Shifts" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_QC_Scales_Readings_Production_Batches" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_ShiftForemansReport_Production_Batches" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_QC_Scales_Readings_Products" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_QC_Scales_Readings_QC_Scales" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_QC_Scales_Stations_QC_Scales" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_QC_Scales_Readings_QC_Scales_Stations" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Stock_Movements_Stock" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Waypoint_Configuration_Waypoints" />
+        <AssociationConnector Association="OMD_DatawarehouseModel.FK_Waypoints_NumberBanks_Waypoints" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

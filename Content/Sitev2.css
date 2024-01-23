@@ -1,0 +1,141 @@
+﻿/*Global*/
+body {
+    height: 100vh;
+    overflow: auto hidden;
+}
+.layout {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    background-color: #1e1e1e;
+    width: 100vw;
+}
+.renderedBody {
+    height: 94vh;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+/*Headings*/
+h1{
+    background-color: #0068b3;
+    color: white;
+    margin: 0;
+    padding: 5px;
+    font-size: 25px;
+}
+h2 {
+    background-color: #1e1e1e;
+    color: white;
+    margin: 0;
+    padding: 5px;
+    font-size: 22px;
+}
+h3 {
+    background-color: #1e1e1e;
+    color: white;
+    margin: 0;
+    padding: 5px;
+    font-size: 20px;
+}
+h4 {
+    background-color: #1e1e1e;
+    color: white;
+    margin: 0;
+    padding: 5px;
+    font-size: 18px;
+}
+/*Forms*/
+.form-horizontal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+    color: #0068b3;
+    padding: 15px;
+}
+.dl-horizontal {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    background-color: white;
+    color: #0068b3;
+    padding: 15px;
+}
+    .dl-horizontal dt {
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+    .dl-horizontal dd {
+        padding: 0;
+        text-align: left;
+    }
+.splitgrid-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+.leftcolum {
+    box-shadow: 1px 1px 10px #0068b3;
+}
+
+.rightcolum {
+    padding: 15px;
+}
+
+
+/*Controls*/
+.btn-toolbar{
+
+}
+.table {
+    background-color: white;
+    color: #0068b3;
+}
+.Top-Message-Box {
+    height: 45px;
+    text-align: center;
+    border-radius: 15px 15px 0 0;
+    vertical-align: middle;
+    font-weight: 900;
+    font-size: 22px;
+}
+/*Buttons*/
+/*Navigation*/
+.Menu-Main {
+    background-color: #0068b3;
+    height: 100vh;
+    padding: 5px 5px 0 0;
+}
+.Menu-Item {
+    color: white;
+    padding: 10px;
+    border: 1px solid #1e1e1e;
+    border-radius: 0 5px 0 0;
+    font-size: 15px;
+    font-weight: 800;
+    box-shadow: 1px 1px 10px #1e1e1e;
+    background-color: #0068b3;
+}
+    .Menu-Item:hover {
+        background-color: white;
+        color: #0068b3;
+    }
+.Menu-Item-Sub {
+    color: #0068b3;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 0 5px 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 1px 1px 10px black;
+    background-color: white;
+}
+    .Menu-Item-Sub:hover {
+        color: white;
+        background-color: #0068b3;
+    }
+/*Animations*/
+.grow {
+    transition: linear .2s ease-in-out;
+}
+    .grow:hover {
+        transform: scale(1.01);
+    }
