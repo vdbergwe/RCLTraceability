@@ -77,10 +77,13 @@ def GenerateLabels():
     return "OK"
 def printLabels():
     try:
-        f = open('storage/handlingUnits/labels/'+str(HandlingUnit.SSCC)+".zpl", "r")
-        z.output(f.read())
+        print('Trying to open file: ' + 'storage/handlingUnits/labels/'+str(HandlingUnit.SSCC) + '.zpl')
+        f = open('storage/handlingUnits/labels/'+str(HandlingUnit.SSCC)+'.zpl', 'r')
+        print(f)
+        z.output(f.read())        
     except Exception as e:
-        return "Error calling printer :" +  str(e)
+        print('Error calling printer : ' + str(e))
+        return "Error calling printer :" +  str(e)        
     return "Print Succesfull"
 
 

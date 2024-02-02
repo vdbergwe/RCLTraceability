@@ -1,12 +1,13 @@
 import urllib.request, urllib.error, requests
 import os
 import datetime
+import math
 import socket
 import re, uuid
 import sys
 import json
-import julian
-from datetime import timedelta
+#import julian
+from datetime import datetime, timedelta
 
 class MachineConfiguration:
     if os.path.isfile("storage/configs/machine_config.json"):
@@ -139,7 +140,24 @@ class Operational_Variables():
     Customer_Logo = 'storage/images/logo_rcl.png'
     LabelImg = ''
     IsLoggedIn = False
-    DateCode = julian.to_jd(datetime.datetime.now() + timedelta(hours=12), fmt='jd')
+    def calculate_julian_date(date_time):
+        julian_datetime = 367 * date_time.year - int((7 * (date_time.year + int((date_time.month + 9) / 12.0))) / 4.0) + int(
+                        (275 * date_time.month) / 9.0) + date_time.day + 1721013.5 + (date_time.hour + date_time.minute / 60.0 + date_time.second / math.pow(
+                            60,2)) / 24.0 - 0.5 * math.copysign(1, 100 * date_time.year + date_time.month - 190002.5) + 0.5
+
+        return julian_datetime
+
+    # Get current date and time
+    current_datetime = datetime.now() + timedelta(hours=12)
+
+    # Convert to Julian Date manually
+    DateCode = calculate_julian_date(current_datetime)
+    #DateCode = julian.to_jd(datetime.datetime.now() + timedelta(hours=12), fmt='jd')
+
+    print(DateCode)
+
+    
+
 # Startup Checks
 class startup_Checks():
     global Device
@@ -379,7 +397,7 @@ def pas_Save_HU():
     data = {'Id': str(0),
             'SSCC': str(HandlingUnit.SSCC),
             'Product': str(Product.Id), 
-            'Created': str(datetime.datetime.now()), 
+            'Created': str(datetime.now()), 
             'CreatedBy': str(Device.CurrentOperatorId),
             'Status': str(HandlingUnit.Status),
             'NumberBank': str(NumberRange.Id),
@@ -396,7 +414,7 @@ def pas_Save_HU():
     f = open("storage/configs/configuration.json", "r")
     data = json.load(f)
     data['Waypoint1']['Waypoints_NumberBanks']['LastIssued'] = str(int(NumberRange.LastIssued) + 1).zfill(5)
-    data["LastCheckin"] = str(datetime.datetime.now())
+    data["LastCheckin"] = str(datetime.now())
     json_object = json.dumps(data, indent = 4)
     f.close()
     f = open("storage/configs/configuration.json", "w")

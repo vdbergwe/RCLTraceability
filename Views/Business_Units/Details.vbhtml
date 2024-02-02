@@ -14,19 +14,19 @@ End Code
         @Html.ActionLink("Back to List", "Index", Nothing, New With {.class = "btn btn-info"})
     </div>
 </div>
-<h4 data-target="#BP" data-toggle="collapse" class="panel-heading">
+<h4 data-bs-target="#BP" data-bs-toggle="collapse" class="panel-heading">
     Plants
 </h4>
 <div id="BP" class="collapse">
     @Html.Action("Index", "Business_Units_Plants", New With {.IsPartial = True, .Id = Model.Id})
 </div>
-<h4 data-target="#BL" data-toggle="collapse" class="panel-heading">
+<h4 data-bs-target="#BL" data-bs-toggle="collapse" class="panel-heading">
     Locations
 </h4>
 <div id="BL" class="collapse">
     @Html.Action("Index", "Plants_Locations", New With {.IsPartial = True, .Id = Model.Id})
 </div>
-<h4 data-target="#BD" data-toggle="collapse" class="panel-heading">
+<h4 data-bs-target="#BD" data-bs-toggle="collapse" class="panel-heading">
     Devices
 </h4>
 <div id="BD" class="collapse">

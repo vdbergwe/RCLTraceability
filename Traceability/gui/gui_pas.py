@@ -122,15 +122,15 @@ def pas():
                         calculator()
                         # Get Labels
                         l = GenerateLabels()                        
-                        if l == "OK":
-                            Operational_Variables.LabelImg = 'storage/handlingUnits/labels/' + str(HandlingUnit.SSCC) + '.png'
-                            img_Label.destroy()
-                            img_Label = Picture(box_label, image=Operational_Variables.LabelImg, width=425, height=550)
-                            input_Scanner.value = ''
-                            input_Scanner.focus()
-                            break
-                        else:
-                            Product.Description = "FAILED"
+                        #if l == "OK":
+                        #    Operational_Variables.LabelImg = 'storage/handlingUnits/labels/' + str(HandlingUnit.SSCC) + '.png'
+                        #    img_Label.destroy()
+                        #    img_Label = Picture(box_label, image=Operational_Variables.LabelImg, width=425, height=550)
+                        #    input_Scanner.value = ''
+                        #    input_Scanner.focus()
+                        #    break
+                        #else:
+                        #    Product.Description = "FAILED"
             if 'CLEAR' in input_Scanner.value:
                 pas()
                 IsIdle = True

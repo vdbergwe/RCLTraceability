@@ -14,7 +14,7 @@
     "NetworkInformation": null,
     "LocalWebServerUrlPORT": null,
     "RequiresUpdate": null,
-    "LastCheckin": "2024/01/22 16:01:08",
+    "LastCheckin": "2024/01/25 10:07:06",
     "LastReportedStatus": "Operator | Logged In",
     "NetworkConfigIP": null,
     "NetworkConfigSubnet": null,
@@ -23,7 +23,7 @@
     "LockedOut": false,
     "LockedOutBy": null,
     "LockedOutOn": null,
-    "SecurityKey": "7122c79b-be88-4880-85e7-90ad411af065",
+    "SecurityKey": "83a8437e-4ec7-466c-8e4f-ae7a91967656",
     "CurrentOperatorId": "Carl",
     "RequiresSupport": null,
     "Waypoint1": {
@@ -53,14 +53,14 @@
             "Status": "Allocated"
         },
         "Waypoints_Batches": {
-            "Id": 2416,
-            "Description": "2024022M11101000",
+            "Id": 2417,
+            "Description": "2024025M11101000",
             "Type": "Production Batch",
             "Status": "Current",
             "Shift": 8,
-            "BatchDate": "/Date(1705874400000)/",
-            "BatchCreated": "/Date(1705930415650)/",
-            "BatchEnded": "/Date(1705959215650)/",
+            "BatchDate": "/Date(1706133600000)/",
+            "BatchCreated": "/Date(1706167416367)/",
+            "BatchEnded": "/Date(1706196216367)/",
             "Plant": "Malelane"
         },
         "Waypoints_Configurations": [

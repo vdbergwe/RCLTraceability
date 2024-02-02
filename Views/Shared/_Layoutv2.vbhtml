@@ -4,8 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
     <script src="https://kit.fontawesome.com/679062be7c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="~/Content/Sitev2.css">
     <script src="https://cdn.tiny.cloud/1/s25uxpc05oca1wcsqix1e5ipt85urutblb6kqpbxa050eypb/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -14,6 +12,8 @@
             selector: 'textarea'
         });
     </script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 
 <body>
@@ -22,10 +22,10 @@
     </h1>
     <div class="layout">
         <div class="Menu-Main">
-            <div class="Menu-Item grow" data-toggle="collapse" data-target="#Home" onclick="location.href = '@Url.Action("Index", "Home")'">
+            <div class="Menu-Item grow" data-bs-toggle="collapse" data-bs-target="#Home" onclick="location.href = '@Url.Action("Index", "Home")'">
                 <i class="fa fa-5 fa-home"></i> Home
             </div>
-            <div class="Menu-Item grow" data-toggle="collapse" data-target="#mnReporting">
+            <div class="Menu-Item grow" data-bs-toggle="collapse" data-bs-target="#mnReporting">
                 <i class="fa-solid fa-print"></i> Reporting
             </div>
             <div class="collapse" id="mnReporting">
@@ -36,7 +36,7 @@
                     <i class="fa-solid fa-down-left-and-up-right-to-center"></i> Over\Under Report
                 </div>
             </div>
-            <div class="Menu-Item grow" data-toggle="collapse" data-target="#mnBatches">
+            <div class="Menu-Item grow" data-bs-toggle="collapse" data-bs-target="#mnBatches">
                 <i class="fa-solid fa-business-time"></i> Batches
             </div>
             <div class="collapse" id="mnBatches">
@@ -47,7 +47,7 @@
                     <i class="fa-solid fa-magnifying-glass"></i> Search
                 </div>
             </div>
-            <div class="Menu-Item grow" data-toggle="collapse" data-target="#mnTraceability">
+            <div class="Menu-Item grow" data-bs-toggle="collapse" data-bs-target="#mnTraceability">
                 <i class="fa-solid fa-magnifying-glass-location"></i> Traceability
             </div>
             <div class="collapse" id="mnTraceability">
@@ -72,7 +72,7 @@
                     </div>
                 End If
             </div>
-            <div Class="Menu-Item grow" data-toggle="collapse" data-target="#mnMaterial">
+            <div Class="Menu-Item grow" data-bs-toggle="collapse" data-bs-target="#mnMaterial">
                 <i class="fa-solid fa-boxes-packing"></i> Material
             </div>
             <div class="collapse" id="mnMaterial">
@@ -96,7 +96,7 @@
                 <i class="fa-brands fa-product-hunt"></i> Products
             </div>
 
-            <div Class="Menu-Item grow" data-toggle="collapse" data-target="#mnScales">
+            <div Class="Menu-Item grow" data-bs-toggle="collapse" data-bs-target="#mnScales">
                 <i class="fa-solid fa-weight-scale"></i> Scales
             </div>
             <div class="collapse" id="mnScales">
@@ -110,7 +110,7 @@
                     Scale Readings
                 </div>
             </div>
-            <div Class="Menu-Item grow" data-toggle="collapse" data-target="#mnSystem">
+            <div Class="Menu-Item grow" data-bs-toggle="collapse" data-bs-target="#mnSystem">
                 <i Class="fa fa-5 fa-gear"></i> System
             </div>
             <div Class="collapse" id="mnSystem">
@@ -151,6 +151,7 @@
             End If
             @RenderBody()
         </div>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required:=False)

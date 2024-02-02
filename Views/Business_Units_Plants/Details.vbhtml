@@ -17,31 +17,31 @@ End Code
 </div>
 <div>
     <div>
-        <h4 data-target="#PSh" data-toggle="collapse" class="panel-heading">
+        <h4 data-bs-target="#PSh" data-bs-toggle="collapse" class="panel-heading">
             Shifts
         </h4>
         <div id="PSh" class="collapse">
             @Html.Action("Index", "Plants_Shifts", New With {.IsPartial = True, .Id = Model.Id, .FilterBy = "PL"})
         </div>
-        <h4 data-target="#PLo" data-toggle="collapse" class="panel-heading">
+        <h4 data-bs-target="#PLo" data-bs-toggle="collapse" class="panel-heading">
             Locations
         </h4>
         <div id="PLo" class="collapse">
             @Html.Action("Index", "Plants_Locations", New With {.IsPartial = True, .Id = Model.Id, .FilterBy = "PL"})
         </div>
-        <h4 data-target="#PB" data-toggle="collapse" class="panel-heading">
+        <h4 data-bs-target="#PB" data-bs-toggle="collapse" class="panel-heading">
             Batches
         </h4>
         <div id="PB" class="collapse">
             @Html.Action("Index", "Production_Batches", New With {.IsPartial = True, .Id = Model.Id, .FilterBy = "PL"})
         </div>
-        <h4 data-target="#PNR" data-toggle="collapse" class="panel-heading">
+        <h4 data-bs-target="#PNR" data-bs-toggle="collapse" class="panel-heading">
             Devices
         </h4>
         <div id="PNR" class="collapse">
             @Html.Action("Index", "Devices", New With {.IsPartial = True, .Id = Model.Id, .FilterBy = "PL"})
         </div>
-        <h4 data-target="#PPR" data-toggle="collapse" class="panel-heading">
+        <h4 data-bs-target="#PPR" data-bs-toggle="collapse" class="panel-heading">
             Products
         </h4>
         <div id="PPR" class="collapse">
