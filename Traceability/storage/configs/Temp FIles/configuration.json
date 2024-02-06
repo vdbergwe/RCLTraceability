@@ -14,7 +14,7 @@
     "NetworkInformation": null,
     "LocalWebServerUrlPORT": null,
     "RequiresUpdate": null,
-    "LastCheckin": "2024/01/25 10:07:06",
+    "LastCheckin": "2024/02/05 11:21:30",
     "LastReportedStatus": "Operator | Logged In",
     "NetworkConfigIP": null,
     "NetworkConfigSubnet": null,
@@ -23,7 +23,7 @@
     "LockedOut": false,
     "LockedOutBy": null,
     "LockedOutOn": null,
-    "SecurityKey": "83a8437e-4ec7-466c-8e4f-ae7a91967656",
+    "SecurityKey": "b8a80213-ba27-416e-89d1-83569f58f4a3",
     "CurrentOperatorId": "Carl",
     "RequiresSupport": null,
     "Waypoint1": {
@@ -43,7 +43,7 @@
             "Root": "99502",
             "FirstNumber": 0,
             "LastNumber": 99999,
-            "LastIssued": "-00001",
+            "LastIssued": "00004",
             "Created": null,
             "Reserved": null,
             "Released": null,
@@ -53,14 +53,14 @@
             "Status": "Allocated"
         },
         "Waypoints_Batches": {
-            "Id": 2417,
-            "Description": "2024025M11101000",
+            "Id": 2423,
+            "Description": "2024036M11101000",
             "Type": "Production Batch",
             "Status": "Current",
             "Shift": 8,
-            "BatchDate": "/Date(1706133600000)/",
-            "BatchCreated": "/Date(1706167416367)/",
-            "BatchEnded": "/Date(1706196216367)/",
+            "BatchDate": "/Date(1707084000000)/",
+            "BatchCreated": "/Date(1707124132747)/",
+            "BatchEnded": "/Date(1707152932747)/",
             "Plant": "Malelane"
         },
         "Waypoints_Configurations": [

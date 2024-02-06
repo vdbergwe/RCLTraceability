@@ -3,11 +3,28 @@ import os
 import datetime
 import math
 import socket
+import time
 import re, uuid
 import sys
 import json
 #import julian
 from datetime import datetime, timedelta
+
+def is_server_visible():
+    try:        
+        socket.create_connection(('rclstrace01.tsb.co.za', 80), timeout=5)
+        return True
+    except (socket.timeout, socket.error):
+        return False
+
+def connect_to_server():
+    while not is_server_visible():
+        print("Server not visible. Retrying in 10 seconds...")
+        time.sleep(10)
+
+    print("Server is now visible. Connecting...")    
+
+connect_to_server()
 
 class MachineConfiguration:
     if os.path.isfile("storage/configs/machine_config.json"):
