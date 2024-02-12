@@ -30,6 +30,15 @@ Partial Public Class Product
     Public Property ExpiryDays As Nullable(Of Integer)
     Public Property Labels As Nullable(Of Integer)
     Public Property QCSampleSize As Nullable(Of Integer)
+    Public Property GTin_Con As String
+    Public Property GTIN_HU As String
+    Public Property GTIN_Level1 As String
+    Public Property GTIN_Level2 As String
+    Public Property ConsPerHUNum As Nullable(Of Decimal)
+    Public Property ConsPerHUInt As Nullable(Of Integer)
+    Public Property SAPDeletionFlagX As String
+    Public Property WERKS As String
+    Public Property MATNR As String
 
     Public Overridable Property Handling_Units As ICollection(Of Handling_Units) = New HashSet(Of Handling_Units)
     Public Overridable Property QC_Scales_Readings As ICollection(Of QC_Scales_Readings) = New HashSet(Of QC_Scales_Readings)

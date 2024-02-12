@@ -1,0 +1,8 @@
+{
+  "BASE_URL": "https://rclstrace01.tsb.co.za",
+  "REGISTRATION_URL": "/Devices/Device_Registration/?Id=",
+  "CONFIGURATION_ENDPOINTS_URL": "/Devices/Device_Endpoints/?Id=",
+  "DEVICE_ID": "48",
+  "DEV_MODE": "False",
+  "COUNTRY": "South-Africa"
+}

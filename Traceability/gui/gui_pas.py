@@ -89,10 +89,11 @@ def pas():
         if event.key == "\r":
             IsIdle = False
             def product_Lookup():
-                searchString = input_Scanner.value[0:14]
+                # searchString = input_Scanner.value[0:14]
+                searchString = input_Scanner.value
                 global products, img_Label, box_label
                 for i in products:
-                    if i['SalesUnitBarcode'] == searchString:
+                    if i['GTIN_HU'] == searchString or i['GTIN_Level1'] == searchString:
                         HandlingUnit.ScannedGTIN = input_Scanner.value
                         # Set Product Information
                         Product.Description = (i['Description'])
@@ -147,7 +148,7 @@ def pas():
             if 'FLAG_REJECT' in input_Scanner.value:
                 hu_Reject()
                 pas()
-            if len(input_Scanner.value) == 32 and str.isalnum(input_Scanner.value) or len(input_Scanner.value) == 14 and str.isalnum(input_Scanner.value):
+            if len(input_Scanner.value) >= 13 and str.isalnum(input_Scanner.value):
                 product_Lookup()
     # Actions
     input_Scanner.focus()

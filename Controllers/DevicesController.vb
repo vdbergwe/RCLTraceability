@@ -119,8 +119,12 @@ Namespace Controllers
             Return Json(result, JsonRequestBehavior.AllowGet)
         End Function
         ' GET: Get_Device_Products                                              DONE FE v4
-        Function Get_Device_Products() As ActionResult
-            Dim result = From b In db.Products.Where(Function(f) f.Status = "Active" And f.Labels IsNot Nothing And f.ExpiryDays IsNot Nothing) Select New Meta_Devices.Product() With {
+        Function Get_Device_Products(id As Integer?) As ActionResult
+            Dim Waypoint = db.Devices.Find(id).Waypoint
+            Dim Location = db.Waypoints.Find(Waypoint).Location
+            Dim PlantID = db.Plants_Locations.Find(Location).PlantId
+            Dim WERKS = db.Business_Units_Plants.Find(PlantID).PlantCode
+            Dim result = From b In db.Products.Where(Function(f) f.Status = "Active" And f.Labels IsNot Nothing And f.ExpiryDays IsNot Nothing And f.WERKS = WERKS) Select New Meta_Devices.Product() With {
                                                                                                 .Id = b.Id,
                                                                                                 .PLU = b.PLU,
                                                                                                 .Description = b.Description,
@@ -139,7 +143,16 @@ Namespace Controllers
                                                                                                 .UOM = b.UOM,
                                                                                                 .Expiry = b.ExpiryDays,
                                                                                                 .Labels = b.Labels,
-                                                                                                .QCSampleSize = b.QCSampleSize
+                                                                                                .QCSampleSize = b.QCSampleSize,
+                                                                                                .GTin_Con = b.GTin_Con.Trim(),
+                                                                                                .GTIN_HU = b.GTIN_HU.Trim(),
+                                                                                                .GTIN_Level1 = b.GTIN_Level1.Trim(),
+                                                                                                .GTIN_Level2 = b.GTIN_Level2.Trim(),
+                                                                                                .ConsPerHUNum = b.ConsPerHUNum,
+                                                                                                .ConsPerHUInt = b.ConsPerHUInt,
+                                                                                                .SAPDeletionFlagX = b.SAPDeletionFlagX,
+                                                                                                .WERKS = b.WERKS,
+                                                                                                .MATNR = b.MATNR
                                                                                                 }
             If IsNothing(result) Then
                 Return HttpNotFound()

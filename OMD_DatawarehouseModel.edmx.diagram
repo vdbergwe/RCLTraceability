@@ -21,7 +21,7 @@
         <EntityTypeShape EntityType="OMD_DatawarehouseModel.Plants_Locations" Width="1.5" PointX="5.25" PointY="11.375" />
         <EntityTypeShape EntityType="OMD_DatawarehouseModel.Plants_Shifts" Width="1.5" PointX="5.25" PointY="23.75" />
         <EntityTypeShape EntityType="OMD_DatawarehouseModel.Production_Batches" Width="1.5" PointX="7.5" PointY="24.125" />
-        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Product" Width="1.5" PointX="10.5" PointY="4.5" />
+        <EntityTypeShape EntityType="OMD_DatawarehouseModel.Product" Width="1.5" PointX="11" PointY="2.375" />
         <EntityTypeShape EntityType="OMD_DatawarehouseModel.QC_Scales" Width="1.5" PointX="5.25" PointY="7" />
         <EntityTypeShape EntityType="OMD_DatawarehouseModel.QC_Scales_Readings" Width="1.5" PointX="12.75" PointY="16.375" />
         <EntityTypeShape EntityType="OMD_DatawarehouseModel.QC_Scales_Stations" Width="1.5" PointX="7.5" PointY="10.375" />

@@ -12,6 +12,122 @@ Namespace Controllers
             .Created = Now()
             }
 
+        Function get_SAP_Material_Update()
+            Log.CreatedBy = User.Identity.Name
+            Log.Description = ""
+            Log.SyncScope = "Get SAP Materials"
+            Log.SourceSystem = "SAP"
+            Log.DestinationSystem = "OMD Traceability"
+            Dim destination = OMDdb.Products
+            Dim source = SAPdb.zTraceIn_SAPMaterials
+            Log.Description = "Sync Materials from SAP | S: " & source.Count().ToString & " | D: " & source.Count().ToString
+            For Each i In source
+                Dim MatnrTrimmed = i.MATNR.TrimStart("0")
+                Dim MaterialExist = OMDdb.Products.Where(Function(s) s.PLU = MatnrTrimmed And s.WERKS = i.WERKS).Count()
+                Dim c As Product = Nothing
+                If MaterialExist > 0 Then
+                    c = OMDdb.Products.Single(Function(s) s.PLU = MatnrTrimmed And s.WERKS = i.WERKS)
+                End If
+                If IsNothing(c) Then
+                    Dim p As New Product With {
+                    .PLU = i.MATNR.TrimStart("0"),
+                    .Description = i.MAKTX,
+                    .ConsumerBarcode = i.GTIN_Level1,
+                    .SalesUnitBarcode = i.GTIN_CON,
+                    .GTin_Con = i.GTIN_CON,
+                    .GTIN_HU = i.GTIN_HU,
+                    .GTIN_Level1 = i.GTIN_Level1,
+                    .GTIN_Level2 = i.GTIN_Level2,
+                    .UOM = i.SAPUOM_Base,
+                    .ProducedBy = OMDdb.Business_Units_Plants.Single(Function(f) f.PlantCode = i.WERKS).Description,
+                    .Commodity = i.GTIN_CON,
+                    .ConsumerUnits = i.HUQty_CON,
+                    .SalesUnits = i.HUQty_Level1,
+                    .HUTargetWeight = i.NetWt_HU,
+                    .Labels = OMDdb.Software_Settings.Find("b2542cc5-0f9f-4495-93fa-78de561aa981").SettingValue,
+                    .QCSampleSize = OMDdb.Software_Settings.Find("170cce7d-1cc4-44be-9023-5cc1de85c035").SettingValue,
+                    .ExpiryDays = 365 * 3,
+                    .Packaging = i.SAPUOM_Level1,
+                    .Status = IIf(IsNothing(i.GTIN_CON) Or IsNothing(i.GTIN_HU) Or IsNothing(i.GTIN_Level1), "Failed", "Active"),
+                    .TareWeight = i.TareWt_CON,
+                    .Type = i.ProductType,
+                    .TargetWeight = i.NetWt_CON,
+                    .WERKS = i.WERKS,
+                    .MATNR = i.MATNR
+                    }
+                    OMDdbBatches.Products.Add(p)
+                    OMDdbBatches.SaveChanges()
+                Else
+                    Dim RecordChanged = False
+                    Select Case True
+                        Case c.Description <> i.MAKTX
+                            RecordChanged = True
+                        Case c.GTin_Con <> i.GTIN_CON
+                            RecordChanged = True
+                        Case c.GTIN_HU <> i.GTIN_HU
+                            RecordChanged = True
+                        Case c.GTIN_Level1 <> i.GTIN_Level1
+                            RecordChanged = True
+                        Case c.GTIN_Level2 <> i.GTIN_Level2
+                            RecordChanged = True
+                        Case c.Packaging <> i.SAPUOM_Level1
+                            RecordChanged = True
+                        Case c.UOM <> i.SAPUOM_Base
+                            RecordChanged = True
+                        Case c.ConsumerUnits <> i.HUQty_CON
+                            RecordChanged = True
+                        Case c.SalesUnits <> i.HUQty_Level1
+                            RecordChanged = True
+                        Case c.HUTargetWeight <> i.NetWt_HU
+                            RecordChanged = True
+                        Case c.TareWeight <> i.TareWt_CON
+                            RecordChanged = True
+                        Case c.Type <> i.ProductType
+                            RecordChanged = True
+                        Case c.TareWeight <> i.NetWt_CON
+                            RecordChanged = True
+                        Case c.WERKS <> i.WERKS
+                            RecordChanged = True
+                        Case c.MATNR <> i.MATNR
+                            RecordChanged = True
+                    End Select
+                    If RecordChanged Then
+                        With c
+                            .PLU = i.MATNR.TrimStart("0")
+                            .Description = i.MAKTX
+                            .ConsumerBarcode = i.GTIN_Level1
+                            .SalesUnitBarcode = i.GTIN_CON
+                            .GTin_Con = i.GTIN_CON
+                            .GTIN_HU = i.GTIN_HU
+                            .GTIN_Level1 = i.GTIN_Level1
+                            .GTIN_Level2 = i.GTIN_Level2
+                            .UOM = i.SAPUOM_Base
+                            .ProducedBy = OMDdb.Business_Units_Plants.Single(Function(f) f.PlantCode = i.WERKS).Description
+                            .Commodity = i.GTIN_CON
+                            .ConsumerUnits = i.HUQty_CON
+                            .SalesUnits = i.HUQty_Level1
+                            .HUTargetWeight = i.NetWt_HU
+                            .Labels = OMDdb.Software_Settings.Find("b2542cc5-0f9f-4495-93fa-78de561aa981").SettingValue
+                            .QCSampleSize = OMDdb.Software_Settings.Find("170cce7d-1cc4-44be-9023-5cc1de85c035").SettingValue
+                            .ExpiryDays = 365 * 3
+                            .Packaging = i.SAPUOM_Level1
+                            .Status = IIf(IsNothing(i.GTIN_CON) Or IsNothing(i.GTIN_HU) Or IsNothing(i.GTIN_Level1), "Failed", "Active")
+                            .TareWeight = i.TareWt_CON
+                            .Type = i.ProductType
+                            .TargetWeight = i.NetWt_CON
+                            .WERKS = i.WERKS
+                            .MATNR = i.MATNR
+                        End With
+                        OMDdb.Entry(c).State = EntityState.Modified
+                        OMDdb.SaveChanges()
+                    End If
+                End If
+            Next
+            OMDdb.Integration_SyncLogs.Add(Log)
+            OMDdb.SaveChanges()
+            Return ("OK")
+        End Function
+
         Function get_SAP_Material()
             Log.CreatedBy = User.Identity.Name
             Log.Description = ""

@@ -289,6 +289,15 @@
           <Property Name="ExpiryDays" Type="int" />
           <Property Name="Labels" Type="int" />
           <Property Name="QCSampleSize" Type="int" />
+          <Property Name="GTin_Con" Type="nchar" MaxLength="18" />
+          <Property Name="GTIN_HU" Type="nchar" MaxLength="18" />
+          <Property Name="GTIN_Level1" Type="nchar" MaxLength="18" />
+          <Property Name="GTIN_Level2" Type="nchar" MaxLength="18" />
+          <Property Name="ConsPerHUNum" Type="numeric" Precision="8" Scale="3" />
+          <Property Name="ConsPerHUInt" Type="int" />
+          <Property Name="SAPDeletionFlagX" Type="nchar" MaxLength="1" />
+          <Property Name="WERKS" Type="nchar" MaxLength="4" />
+          <Property Name="MATNR" Type="nchar" MaxLength="18" />
         </EntityType>
         <EntityType Name="QC_Scales">
           <Key>
@@ -1400,6 +1409,15 @@
           <Property Name="QCSampleSize" Type="Int32" />
           <NavigationProperty Name="Handling_Units" Relationship="OMD_DatawarehouseModel.FK_Handling_Units_Products1" FromRole="Product" ToRole="Handling_Units" />
           <NavigationProperty Name="QC_Scales_Readings" Relationship="OMD_DatawarehouseModel.FK_QC_Scales_Readings_Products" FromRole="Product" ToRole="QC_Scales_Readings" />
+          <Property Name="GTin_Con" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="GTIN_HU" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="GTIN_Level1" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="GTIN_Level2" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="ConsPerHUNum" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="ConsPerHUInt" Type="Int32" />
+          <Property Name="SAPDeletionFlagX" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="WERKS" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="MATNR" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="QC_Scales">
           <Key>
@@ -2248,6 +2266,15 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="OMD_DatawarehouseModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="SAPDeletionFlagX" ColumnName="SAPDeletionFlagX" />
+                <ScalarProperty Name="ConsPerHUInt" ColumnName="ConsPerHUInt" />
+                <ScalarProperty Name="ConsPerHUNum" ColumnName="ConsPerHUNum" />
+                <ScalarProperty Name="GTIN_Level2" ColumnName="GTIN_Level2" />
+                <ScalarProperty Name="GTIN_Level1" ColumnName="GTIN_Level1" />
+                <ScalarProperty Name="GTIN_HU" ColumnName="GTIN_HU" />
+                <ScalarProperty Name="GTin_Con" ColumnName="GTin_Con" />
                 <ScalarProperty Name="QCSampleSize" ColumnName="QCSampleSize" />
                 <ScalarProperty Name="Labels" ColumnName="Labels" />
                 <ScalarProperty Name="ExpiryDays" ColumnName="ExpiryDays" />

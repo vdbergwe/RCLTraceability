@@ -1,4 +1,4 @@
-﻿' T4 code generation is enabled for model 'C:\Users\carlp\source\Local Repositories\RCL\IntranetV2\OMD_DatawarehouseModel.edmx'. 
+﻿' T4 code generation is enabled for model 'D:\OneDrive - RCL Foods\20240115\Traceability\IntranetV2\OMD_DatawarehouseModel.edmx'. 
 ' To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 ' property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 ' is open in the designer.

@@ -30,6 +30,15 @@ Public Class Meta_Devices
         Public Property Expiry As Integer
         Public Property Labels As Integer
         Public Property QCSampleSize As Integer
+        Public Property GTin_Con As String
+        Public Property GTIN_HU As String
+        Public Property GTIN_Level1 As String
+        Public Property GTIN_Level2 As String
+        Public Property ConsPerHUNum As Nullable(Of Decimal)
+        Public Property ConsPerHUInt As Nullable(Of Integer)
+        Public Property SAPDeletionFlagX As String
+        Public Property WERKS As String
+        Public Property MATNR As String
     End Class
     Partial Public Class machine_Config
         Public Property BASE_URL As String

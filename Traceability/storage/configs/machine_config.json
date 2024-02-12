@@ -1,5 +1,5 @@
 {
-  "BASE_URL": "https://rclstrace01.tsb.co.za",
+  "BASE_URL": "https://localhost:44306",
   "REGISTRATION_URL": "/Devices/Device_Registration/?Id=",
   "CONFIGURATION_ENDPOINTS_URL": "/Devices/Device_Endpoints/?Id=",
   "DEVICE_ID": "48",
