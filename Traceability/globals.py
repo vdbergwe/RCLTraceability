@@ -396,7 +396,7 @@ def post_HandlingUnits():
             f.close()
             print(hu_json)
             if hu_json['ScannedCode'] != '':
-                hu_json['Status'] = 'Synced'
+                hu_json['Status'] = 'From CPC'
                 res = requests.post(MachineConfiguration.BASE_URL + '/Handling_Units/PAS', json=hu_json, verify=True)
                 try:
                     res = requests.post(MachineConfiguration.BASE_URL + '/Handling_Units/PAS', json=hu_json, verify=True)
