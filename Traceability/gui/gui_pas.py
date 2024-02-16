@@ -109,6 +109,8 @@ def pas():
                         Product.UOM = (i['UOM'])
                         Product.Id = (i['Id'])
                         Product.Commodity = (i['Commodity'])
+                        Product.WERKS = (i['WERKS'])
+                        Product.GTIN_HU = (i['GTIN_HU'])
                         # Set Handling Units
                         HandlingUnit.Status = 'Pending'
                         # Set GUI

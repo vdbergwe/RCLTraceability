@@ -244,6 +244,8 @@ class Product():
     ProducedBy = ''
     Status = ''
     HUTargetWeight = 0
+    WERKS = ''
+    GTIN_HU = ''
     def clear():
         Product.Id = 0
         Product.Description = 'Ready to Scan'
@@ -263,6 +265,8 @@ class Product():
         Product.ProducedBy = ''
         Product.Status = ''
         Product.HUTargetWeight = 0
+        Product.WERKS = ''
+        Product.GTIN_HU = ''
 # Handling Units
 class HandlingUnit():
     Id = ''
