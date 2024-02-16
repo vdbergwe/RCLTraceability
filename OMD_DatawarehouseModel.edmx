@@ -298,6 +298,7 @@
           <Property Name="SAPDeletionFlagX" Type="nchar" MaxLength="1" />
           <Property Name="WERKS" Type="nchar" MaxLength="4" />
           <Property Name="MATNR" Type="nchar" MaxLength="18" />
+          <Property Name="GTIN_SalesUOM" Type="nchar" MaxLength="18" />
         </EntityType>
         <EntityType Name="QC_Scales">
           <Key>
@@ -1418,6 +1419,7 @@
           <Property Name="SAPDeletionFlagX" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
           <Property Name="WERKS" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
           <Property Name="MATNR" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="GTIN_SalesUOM" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="QC_Scales">
           <Key>
@@ -2266,6 +2268,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="OMD_DatawarehouseModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="GTIN_SalesUOM" ColumnName="GTIN_SalesUOM" />
                 <ScalarProperty Name="MATNR" ColumnName="MATNR" />
                 <ScalarProperty Name="WERKS" ColumnName="WERKS" />
                 <ScalarProperty Name="SAPDeletionFlagX" ColumnName="SAPDeletionFlagX" />
