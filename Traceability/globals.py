@@ -474,13 +474,13 @@ def cpc_Save_HU():
     f.write(str(hu_json))
     f.close()
     print('Handling Unit Sync Completed')
-    Operational_Variables.LastSynced = str(datetime.datetime.now())
+    Operational_Variables.LastSynced = str(datetime.now())
 def gus_Save_HU():
     Operational_Variables.Status = 'Online Syncing Handling Units'
     data = {'Id': str(HandlingUnit.Id),
             'SSCC': str(HandlingUnit.SSCC),
             'Product': str(HandlingUnit.Product), 
-            'Created': str(datetime.datetime.now()), 
+            'Created': str(datetime.now()), 
             'CreatedBy': str(Device.CurrentOperatorId),
             'Status': str(HandlingUnit.Status),
             'NumberBank': str(HandlingUnit.NumberBank),
@@ -502,6 +502,6 @@ def gus_Save_HU():
     f.write(str(hu_json))
     f.close()
     print('Handling Unit Sync Completed')
-    Operational_Variables.LastSynced = str(datetime.datetime.now())
+    Operational_Variables.LastSynced = str(datetime.now())
 get_DeviceEndpoints()
 get_DeviceConfigurations()
