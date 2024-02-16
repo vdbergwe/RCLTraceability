@@ -39,6 +39,7 @@ Partial Public Class Product
     Public Property SAPDeletionFlagX As String
     Public Property WERKS As String
     Public Property MATNR As String
+    Public Property GTIN_SalesUOM As String
 
     Public Overridable Property Handling_Units As ICollection(Of Handling_Units) = New HashSet(Of Handling_Units)
     Public Overridable Property QC_Scales_Readings As ICollection(Of QC_Scales_Readings) = New HashSet(Of QC_Scales_Readings)
