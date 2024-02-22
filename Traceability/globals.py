@@ -401,14 +401,16 @@ def post_HandlingUnits():
             print(hu_json)
             if hu_json['ScannedCode'] != '':
                 hu_json['Status'] = 'From CPC'
-                res = requests.post(MachineConfiguration.BASE_URL + '/Handling_Units/PAS', json=hu_json, verify=True)
+                #res = requests.post(MachineConfiguration.BASE_URL + '/Handling_Units/PAS', json=hu_json, verify=True)
                 try:
                     res = requests.post(MachineConfiguration.BASE_URL + '/Handling_Units/PAS', json=hu_json, verify=True)
                     print('Handling Unit Sync Completed')
                 except:
                     print('Handling Unit Sync Failed')
                 else:
-                    os.remove(path + hu)
+                    res = requests.post(MachineConfiguration.BASE_URL + '/Handling_Units/PAS', json=hu_json, verify=True)
+                    print('Handling Unit Sync Completed')
+                    #os.remove(path + hu)
                 print(res.text)
             else:
                 os.remove(path + hu)
@@ -443,6 +445,12 @@ def pas_Save_HU():
     f.close()   
     NumberRange.LastIssued = data['Waypoint1']['Waypoints_NumberBanks']['LastIssued']
     NumberRange.NextNumber = str(int(data['Waypoint1']['Waypoints_NumberBanks']['LastIssued']) + 1).zfill(5)
+
+def clear_HU():
+    path = 'storage/handlingUnits/local/'
+    hu_list = os.listdir(path)
+    for hu in hu_list:
+        os.remove(path + hu)
 
 def hu_Reject():
     print('Rejecting HU')

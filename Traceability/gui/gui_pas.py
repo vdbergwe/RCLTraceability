@@ -5,7 +5,7 @@ import threading
 from pickle import TRUE
 from guizero import Box, Text, Picture, TextBox, TitleBox
 from gui import heading, content, main_gui, status_Bar
-from globals import Waypoint, Batch, NumberRange, Operational_Variables, Product, HandlingUnit, pas_Save_HU, Batch, server_Check, post_HandlingUnits, Device, hu_Reject
+from globals import Waypoint, Batch, NumberRange, Operational_Variables, Product, HandlingUnit, pas_Save_HU, clear_HU, Batch, server_Check, post_HandlingUnits, Device, hu_Reject
 from functions import calculator, security
 from labels import GenerateLabels, printLabels
 from time import sleep
@@ -139,12 +139,13 @@ def pas():
                 IsIdle = True
                 print('Cleared')
             if 'RELEASEALL' in input_Scanner.value:
-                post_HandlingUnits()
+                clear_HU()
                 pas()
                 IsIdle = True
                 print('RELEASED')
             if 'PRINT' in input_Scanner.value:
                 pas_Save_HU()
+                post_HandlingUnits()
                 printLabels()
                 pas()
             if 'FLAG_REJECT' in input_Scanner.value:
