@@ -54,7 +54,13 @@ Namespace Controllers
         Function Get_GUS_List(DeviceId As Integer?, Status As String) As ActionResult
             Dim AgeCalc = Now()
             Dim Device = db.Devices.Find(DeviceId)
-            Dim result = From b In db.Handling_Units.Where(Function(s) s.Status.Contains(Status)).Take(10).OrderByDescending(Function(a) a.Created) Select New Meta_Devices.handling_Unit() With {
+            Dim UnitCount = 0
+            If Status = "From GUS" Then
+                UnitCount = 5
+            Else
+                UnitCount = 100
+            End If
+            Dim result = From b In db.Handling_Units.Where(Function(s) s.Status.Contains(Status)).OrderByDescending(Function(a) a.Created).Take(UnitCount) Select New Meta_Devices.handling_Unit() With {
                 .Id = b.Id,
                 .Batch = b.Batch,
                 .Created = b.Created,

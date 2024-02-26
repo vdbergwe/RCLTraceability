@@ -2,7 +2,7 @@ from time import sleep
 from guizero import Box, Text, TextBox, TitleBox
 from gui import heading, content, main_gui
 from globals import HandlingUnit, MachineConfiguration, Waypoint, gus_Save_HU
-import urllib.request, urllib.error
+import urllib.request, urllib.error, os
 from datetime import *
 import json
 global Horse, Trailer, Berth
@@ -23,6 +23,7 @@ def gus():
         global content
         header_bar = Box(content, width='fill', align='top')
         header_bar.text_size = 12
+        scannerBx = Box(content, width='fill', height='fill', align='left', border=True)        
     class scanner():
         global input_Scanner, action_Scanner_Result, input_Scanner_Result, content, Consignment
         def scan():
@@ -154,6 +155,26 @@ def gus():
         action_Scanner_Result.value = ''
         action_Scanner_Result.text_size = 28
         action_Scanner_Result.disable()
+        #box_label = Box(content, width='fill', height='fill', align='right', border=True)
+        #img_Label = Picture(box_label, image=Operational_Variables.OMD_Logo)
+        #product_box = Box(scannerBx, width='fill', align='bottom', layout='grid')
+        hu_list_box = TitleBox(scanner_group, 'Pending From CPC',align='bottom', width='fill', height='fill')
+        path = 'storage/handlingUnits/gus/pending.json'
+        if os.path.exists(path):        
+            p = open(path)
+            schu = json.load(p)
+            p.close()
+            for j in schu:
+                row = Box(hu_list_box, align='top', width='fill', border=True)
+                row.text_size = 8
+                Text(row, j['ScannedCode'], align='left')
+                Text(row, j['ProductDescription'], align='left')
+                if j['ScannedCode'] == '':
+                    row.bg = 'Red'
+                elif j['ScannedCode'] != '':
+                    row.bg = '#00ff00'
+                else:
+                    row.bg = 'Orange'
     class ResultsGroup:
         global bx_receive
         def clear():
@@ -203,7 +224,7 @@ def Sync():
             c = c - 1
             sleep(int(1))
         else:
-            sleep(int(300))
+            sleep(int(60))
             if input_Scanner_Result.value == 'Scan Train or Forklift To Start':
                 status_Bar.txt_LastSynced.value = "Checking In ...."
                 server_Check()
