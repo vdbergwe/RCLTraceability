@@ -137,6 +137,8 @@ def gus():
                 action_Scanner_Result.value = 'Train Cancelled Start Again'
                 sleep(1)
                 Reload()
+            elif inputText == "SYNC":
+                Sync()
         scanner = Box(content, width='fill', align='left', border=True, height='fill')
         scanner.bg = '#ffffff'
         scanner.text_size = 28
