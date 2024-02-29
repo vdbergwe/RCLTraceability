@@ -31,8 +31,9 @@ Namespace Logic
                                 .Type = "Production Batch",
                                 .Shift = s.Id,
                                 .Plant = p.Description,
-                                .Description = Now.Year().ToString & Now.DayOfYear.ToString.PadLeft(3, "0") & s.Business_Units_Plants.Identifier & s.Business_Units_Plants.PlantCode & s.ShiftCode & ("000")
+                                .Description = Now.Year().ToString & Now.DayOfYear.ToString.PadLeft(3, "0") & s.Business_Units_Plants.Identifier & s.Business_Units_Plants.PlantCode
                                     }
+                        '& s.ShiftCode & ("000")
                         db.Production_Batches.Add(n)
                         db.SaveChanges()
                     End If

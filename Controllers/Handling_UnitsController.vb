@@ -56,7 +56,7 @@ Namespace Controllers
             Dim Device = db.Devices.Find(DeviceId)
             Dim UnitCount = 0
             If Status = "From GUS" Then
-                UnitCount = 5
+                UnitCount = 6
             Else
                 UnitCount = 100
             End If

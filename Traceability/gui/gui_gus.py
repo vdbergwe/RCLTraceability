@@ -32,6 +32,7 @@ def gus():
             if len(input_Scanner.value) >= 7 and "TRN" in inputText:
                 print("New Vehicle Started")
                 #Creates New Array as Train
+                #SyncManual()
                 Horse = input_Scanner.value + " " + str(datetime.now()).replace(":","").replace(".","")
                 input_Scanner_Result.value = 'New Tractor Scanned'
                 action_Scanner_Result.value = 'Scan Trailer or Scan Handling Unit To Continue'
@@ -137,8 +138,8 @@ def gus():
                 action_Scanner_Result.value = 'Train Cancelled Start Again'
                 sleep(1)
                 Reload()
-            elif inputText == "SYNC":
-                Sync()
+            elif "CLEAR" in inputText:
+                Reload()
         scanner = Box(content, width='fill', align='left', border=True, height='fill')
         scanner.bg = '#ffffff'
         scanner.text_size = 28
@@ -157,9 +158,14 @@ def gus():
         action_Scanner_Result.value = ''
         action_Scanner_Result.text_size = 28
         action_Scanner_Result.disable()
-        #box_label = Box(content, width='fill', height='fill', align='right', border=True)
-        #img_Label = Picture(box_label, image=Operational_Variables.OMD_Logo)
-        #product_box = Box(scannerBx, width='fill', align='bottom', layout='grid')
+        url = urllib.request.urlopen(MachineConfiguration.BASE_URL + "/Handling_Units/Get_GUS_List/?DeviceId=" + str(MachineConfiguration.DEVICE_ID) + "&Status=From%20CPC")
+        response = json.loads(url.read().decode())
+        pending_HUs = json.dumps(response, indent = 4)
+        print(str(datetime.now()) + ' Contacting Server | Downloading Pending Units | Started')
+        f = open("storage/handlingUnits/gus/pending.json", "w")
+        f.write(pending_HUs)
+        f.close()
+        print(pending_HUs)
         hu_list_box = TitleBox(scanner_group, 'Pending From CPC',align='bottom', width='fill', height='fill')
         path = 'storage/handlingUnits/gus/pending.json'
         if os.path.exists(path):        
@@ -188,15 +194,7 @@ def gus():
         header.text_size = 9
         bx_receive_SSCC = Text(header, 'SSCC                | ', align='left')
         bx_receive_prod = Text(header, 'Product', align='left')
-        bx_receive_age = Text(header, 'Waiting Time', align='right')
-        url = urllib.request.urlopen(MachineConfiguration.BASE_URL + "/Handling_Units/Get_GUS_List/?DeviceId=" + str(MachineConfiguration.DEVICE_ID) + "&Status=From%20CPC")
-        response = json.loads(url.read().decode())
-        pending_HUs = json.dumps(response, indent = 4)
-        print(str(datetime.now()) + ' Contacting Server | Downloading Pending Units | Started')
-        f = open("storage/handlingUnits/gus/pending.json", "w")
-        f.write(pending_HUs)
-        f.close()
-        print(pending_HUs)
+        bx_receive_age = Text(header, 'Waiting Time', align='right')        
         url = urllib.request.urlopen(MachineConfiguration.BASE_URL + "/Handling_Units/Get_GUS_List/?DeviceId=" + str(MachineConfiguration.DEVICE_ID) + "&Status=From%20GUS")
         response = json.loads(url.read().decode())
         completed_HUs = json.dumps(response, indent = 4)
@@ -216,6 +214,23 @@ def gus():
         print(str(datetime.now()) + ' Contacting Server | Going Online') 
 print('Starting GUS')
 
+def SyncManual():
+    from globals import Waypoint_Configurations, server_Check, Device
+    from gui import status_Bar
+    from time import sleep
+    status_Bar.txt_LastSynced.value = "Checking In ...."
+    sleep(int(5))
+    url = urllib.request.urlopen(MachineConfiguration.BASE_URL + "/Handling_Units/Get_GUS_List/?DeviceId=" + str(MachineConfiguration.DEVICE_ID) + "&Status=From%20CPC")
+    response = json.loads(url.read().decode())
+    pending_HUs = json.dumps(response, indent = 4)
+    print(str(datetime.now()) + ' Contacting Server | Downloading Pending Units | Started')
+    f = open("storage/handlingUnits/gus/pending.json", "w")
+    f.write(pending_HUs)
+    f.close()
+    print(pending_HUs)
+    server_Check()
+    status_Bar.txt_LastSynced.value = str(Device.LastCheckin)          
+
 def Sync():
     from globals import Waypoint_Configurations, server_Check, Device
     from gui import status_Bar
@@ -226,7 +241,7 @@ def Sync():
             c = c - 1
             sleep(int(1))
         else:
-            sleep(int(60))
+            sleep(int(300))
             if input_Scanner_Result.value == 'Scan Train or Forklift To Start':
                 status_Bar.txt_LastSynced.value = "Checking In ...."
                 server_Check()
