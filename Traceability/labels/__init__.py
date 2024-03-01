@@ -59,7 +59,7 @@ def GenerateLabels():
           LabelLines.append('^FB240,1,0,R,0^FO250,975^FDProduct HU GTIN:^FS^FO500,975^FD'+Product.GTIN_HU+'^FS               \n')
           LabelLines.append('^FB240,1,0,R,0^FO250,1010^FDOrder Units:^FS^FO500,1010  ^FD'+str(Product.SalesUnits)+'^FS       \n')
           LabelLines.append('^FB240,1,0,R,0^FO250,1045^FDConsumer Units:^FS ^FO500,1045^FD'+str(Product.ConsumerUnits)+'^FS  \n')
-          LabelLines.append('^FB240,1,0,R,0^FO250,1080^FDNet Weight:^FS^FO500,1080FD'+str(Product.HUTargetWeight)+'^FS      \n')
+          LabelLines.append('^FB240,1,0,R,0^FO250,1080^FDNet Weight:^FS^FO500,1080FD'+str(Product.HUTargetWeight)+'^FS       \n')
           LabelLines.append('^FX Unique label ID                                                                             \n')
           LabelLines.append('^FO10,1130^GB810,2,2,B,0^FS                                                                     \n')
           LabelLines.append('^FO90,1140^FDSSCC Label ID: ^FS                                                                 \n')
